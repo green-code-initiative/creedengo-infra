@@ -22,19 +22,24 @@ import java.util.List;
 /**
  * Lists the terraform check classes contributed by creedengo-infra. The
  * registry is consumed by {@link InfraTerraformRulesDefinition} to load rule
- * metadata via {@code RuleMetadataLoader}, mirroring the {@code creedengo-java}
- * <code>JavaCheckRegistrar</code> pattern.
+ * metadata via {@code RuleMetadataLoader}.
+ *
+ * <p>The list MUST stay in sync with
+ * {@code src/main/resources/org/greencodeinitiative/creedengo/profiles/creedengo_way_profile_terraform.json}.
+ * If a rule key is referenced by the profile but its class is missing here,
+ * SonarQube fails to boot with
+ * {@code IllegalStateException: Rule with key 'creedengo-infra-terraform:GCIxxxx' not found}.</p>
  */
 public final class InfraTerraformCheckRegistrar {
 
   public static final List<Class<?>> ANNOTATED_RULE_CLASSES = List.of(
-      /**org.greencodeinitiative.creedengo.infra.checks.TfPreferGravitonArmCheck.class,
-      org.greencodeinitiative.creedengo.infra.checks.TfRightSizeInstanceTypesCheck.class,
-      org.greencodeinitiative.creedengo.infra.checks.TfEnableAutoscalingGroupCheck.class,
-      org.greencodeinitiative.creedengo.infra.checks.TfStorageLifecycleRulesCheck.class,
-      org.greencodeinitiative.creedengo.infra.checks.TfChooseLowCarbonRegionCheck.class,
-      org.greencodeinitiative.creedengo.infra.checks.TfAvoidAlwaysOnResourcesCheck.class,
-      org.greencodeinitiative.creedengo.infra.checks.TfPreferSpotOrSavingsCheck.class**/
+      org.greencodeinitiative.creedengo.infra.checks.TfPreferGravitonArmCheck.class,         // GCI1050
+      org.greencodeinitiative.creedengo.infra.checks.TfRightSizeInstanceTypesCheck.class,    // GCI1051
+      org.greencodeinitiative.creedengo.infra.checks.TfEnableAutoscalingGroupCheck.class,    // GCI1052
+      org.greencodeinitiative.creedengo.infra.checks.TfStorageLifecycleRulesCheck.class,     // GCI1053
+      org.greencodeinitiative.creedengo.infra.checks.TfChooseLowCarbonRegionCheck.class,     // GCI1054
+      org.greencodeinitiative.creedengo.infra.checks.TfAvoidAlwaysOnResourcesCheck.class,    // GCI1055
+      org.greencodeinitiative.creedengo.infra.checks.TfPreferSpotOrSavingsCheck.class        // GCI1056
   );
 
   private InfraTerraformCheckRegistrar() {
@@ -45,3 +50,4 @@ public final class InfraTerraformCheckRegistrar {
     return ANNOTATED_RULE_CLASSES;
   }
 }
+

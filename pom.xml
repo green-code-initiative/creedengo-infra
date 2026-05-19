@@ -275,6 +275,13 @@
     </dependencies>
 
     <build>
+        <!--
+            Stable artifact filename, independent of <version> and Git branch.
+            This lets docker-compose.yml bind-mount a fixed path
+            (./target/creedengo-infra-plugin.jar) without needing edits at
+            every release / branch switch.
+        -->
+        <finalName>creedengo-infra-plugin</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

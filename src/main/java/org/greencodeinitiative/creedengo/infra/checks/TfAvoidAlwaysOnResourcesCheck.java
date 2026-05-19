@@ -39,7 +39,7 @@ import org.sonar.iac.terraform.api.tree.FileTree;
  * flagged here. Users can silence false positives with a tag
  * {@code eco-design:always-on=batch}.</p>
  */
-@Rule(key = "1055")
+@Rule(key = "GCI1055")
 public class TfAvoidAlwaysOnResourcesCheck implements IacCheck {
 
   /** Long-lived resources we want to scale down off-hours. */

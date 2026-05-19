@@ -38,7 +38,7 @@ import org.sonar.iac.common.yaml.tree.TupleTree;
  * guard are flagged at the job tuple. See
  * {@code ciskipredundantjobs.md}.</p>
  */
-@Rule(key = "1059")
+@Rule(key = "GCI1059")
 public class CiSkipRedundantJobsCheck implements IacCheck {
 
   static final String MSG_PATHS =

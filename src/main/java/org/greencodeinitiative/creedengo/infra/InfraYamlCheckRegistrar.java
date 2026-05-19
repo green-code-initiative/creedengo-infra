@@ -20,22 +20,27 @@ package org.greencodeinitiative.creedengo.infra;
 import java.util.List;
 
 /**
- * Lists the yaml check classes contributed by creedengo-infra. The
+ * Lists the yaml / CI check classes contributed by creedengo-infra. The
  * registry is consumed by {@link InfraYamlRulesDefinition} to load rule
- * metadata via {@code RuleMetadataLoader}, mirroring the {@code creedengo-java}
- * <code>JavaCheckRegistrar</code> pattern.
+ * metadata via {@code RuleMetadataLoader}.
+ *
+ * <p>The list MUST stay in sync with
+ * {@code src/main/resources/org/greencodeinitiative/creedengo/profiles/creedengo_way_profile_yaml.json}.
+ * If a rule key is referenced by the profile but its class is missing here,
+ * SonarQube fails to boot with
+ * {@code IllegalStateException: Rule with key 'creedengo-infra-yaml:GCIxxxx' not found}.</p>
  */
 public final class InfraYamlCheckRegistrar {
 
   public static final List<Class<?>> ANNOTATED_RULE_CLASSES = List.of(
-      /**org.greencodeinitiative.creedengo.infra.checks.CiCacheDependenciesCheck.class,
-      org.greencodeinitiative.creedengo.infra.checks.CiSkipRedundantJobsCheck.class,
-      org.greencodeinitiative.creedengo.infra.checks.CiPinRunnerAndArmCheck.class,
-      org.greencodeinitiative.creedengo.infra.checks.CiPinActionsCheck.class,
-      org.greencodeinitiative.creedengo.infra.checks.IacNoSecretInPlaintextEcoCheck.class,
-      org.greencodeinitiative.creedengo.infra.checks.IacTagEnvironmentEcoCheck.class,
-      org.greencodeinitiative.creedengo.infra.checks.IacPrometheusLowRetentionDefaultCheck.class,
-      org.greencodeinitiative.creedengo.infra.checks.IacScheduledScaleDownNonProdCheck.class**/
+      org.greencodeinitiative.creedengo.infra.checks.CiCacheDependenciesCheck.class,             // GCI1058
+      org.greencodeinitiative.creedengo.infra.checks.CiSkipRedundantJobsCheck.class,             // GCI1059
+      org.greencodeinitiative.creedengo.infra.checks.CiPinRunnerAndArmCheck.class,               // GCI1060
+      org.greencodeinitiative.creedengo.infra.checks.IacNoSecretInPlaintextEcoCheck.class,       // GCI1061
+      org.greencodeinitiative.creedengo.infra.checks.IacTagEnvironmentEcoCheck.class,            // GCI1062
+      org.greencodeinitiative.creedengo.infra.checks.IacPrometheusLowRetentionDefaultCheck.class, // GCI1063
+      org.greencodeinitiative.creedengo.infra.checks.IacScheduledScaleDownNonProdCheck.class,    // GCI1064
+      org.greencodeinitiative.creedengo.infra.checks.CiPinActionsCheck.class                     // GCI1065
   );
 
   private InfraYamlCheckRegistrar() {
@@ -46,3 +51,4 @@ public final class InfraYamlCheckRegistrar {
     return ANNOTATED_RULE_CLASSES;
   }
 }
+

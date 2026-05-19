@@ -53,7 +53,7 @@ import org.sonar.iac.docker.tree.api.WorkdirInstruction;
  *
  * <p>See {@code creedengo-infra/instructionsinspecificorder.md}.</p>
  */
-@Rule(key = "1027")
+@Rule(key = "GCI1027")
 public class InstructionsInSpecificOrderCheck implements IacCheck {
 
   private static final String MESSAGE_COPY_BEFORE_INSTALL =

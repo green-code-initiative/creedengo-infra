@@ -44,7 +44,7 @@ import org.sonar.iac.docker.tree.api.Instruction;
  * supervisors will trigger false positives). See the rule markdown for the
  * eco-design rationale (axes 3·4·5·6) and the opt-out guidance.</p>
  */
-@Rule(key = "1038")
+@Rule(key = "GCI1038")
 public class SingleProcessPerContainerCheck implements IacCheck {
 
   private static final String MESSAGE_SUPERVISOR =

@@ -46,7 +46,7 @@ import org.sonar.iac.terraform.api.tree.FileTree;
  * the bare instances on purpose — they coexist with the autoscaled fleet
  * and remain wasteful.</p>
  */
-@Rule(key = "1052")
+@Rule(key = "GCI1052")
 public class TfEnableAutoscalingGroupCheck implements IacCheck {
 
   /** Bare compute resources we flag when scaled out by {@code count}/{@code for_each}. */

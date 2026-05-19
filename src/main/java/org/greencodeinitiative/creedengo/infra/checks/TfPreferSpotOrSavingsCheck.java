@@ -36,7 +36,7 @@ import org.sonar.iac.terraform.api.tree.FileTree;
  * Azure VM Scale Sets. Opt-out: tag {@code workload=stateful} on the
  * resource (so latency-critical fleets aren't flagged).</p>
  */
-@Rule(key = "1056")
+@Rule(key = "GCI1056")
 public class TfPreferSpotOrSavingsCheck implements IacCheck {
 
   /** Target group resources, mapped to per-provider spot-detection logic. */

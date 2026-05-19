@@ -39,7 +39,7 @@ import org.sonar.iac.terraform.api.tree.FileTree;
  * carries no sizing-rationale tag and no {@code lifecycle.ignore_changes}
  * hint to a recommender tool.</p>
  */
-@Rule(key = "1051")
+@Rule(key = "GCI1051")
 public class TfRightSizeInstanceTypesCheck implements IacCheck {
 
   /** Compute / DB resources whose size attribute we audit. */
