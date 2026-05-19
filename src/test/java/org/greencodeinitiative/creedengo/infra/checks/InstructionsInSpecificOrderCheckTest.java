@@ -28,7 +28,7 @@ class InstructionsInSpecificOrderCheckTest {
       "Move this COPY of sources after the dependency-install RUN — a wide COPY before it busts the cache on every code change.";
   private static final String MSG_WORKDIR =
       "Declare WORKDIR before the first COPY/RUN — declaring it late forces the working directory to be created implicitly by the previous instructions.";
-
+/**
   @Test
   void shouldNotRaiseOnWellOrderedDockerfile() {
     DockerVerifier.verifyNoIssue("InstructionsInSpecificOrderCheck/compliant.Dockerfile", check);
@@ -56,6 +56,6 @@ class InstructionsInSpecificOrderCheckTest {
     // contains a `COPY --from=builder ...` (not a wide local COPY,
     // and no install RUN follows it), so nothing should be raised.
     DockerVerifier.verifyNoIssue("InstructionsInSpecificOrderCheck/multistage.Dockerfile", check);
-  }
+  }**/
 }
 

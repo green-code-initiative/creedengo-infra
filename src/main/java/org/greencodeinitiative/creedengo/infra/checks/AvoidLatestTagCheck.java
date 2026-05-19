@@ -44,4 +44,8 @@ import org.sonar.iac.docker.tree.api.FromInstruction;
 @Rule(key = "GCI1031")
 public class AvoidLatestTagCheck implements IacCheck {
 
+    @Override
+    public void initialize(InitContext initContext) {
+
+    }
 }

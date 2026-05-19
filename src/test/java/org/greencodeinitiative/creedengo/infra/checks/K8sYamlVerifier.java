@@ -40,7 +40,7 @@ import org.sonar.iac.common.yaml.YamlParser;
 /**
  * Plain-YAML verifier for Wave-2B Kubernetes checks. Uses {@link YamlParser}
  * directly (no Helm template processing) and the same {@code (line, message)}
- * comparison strategy as {@link DockerVerifier#verifyIssues(String, IacCheck, DockerVerifier.ExpectedIssue...)}.
+ * comparison strategy as {@link DockerVerifier1#verifyIssues(String, IacCheck, DockerVerifier1.ExpectedIssue...)}.
  *
  * <p>For Helm-template fixtures (Go-template AST), keep using the existing
  * {@link KubernetesVerifier} which spins up a full {@code KubernetesAnalyzer}.</p>
@@ -55,27 +55,27 @@ public final class K8sYamlVerifier {
   }
 
   public static void verifyNoIssue(String relativeFileName, IacCheck check) {
-    List<DockerVerifier.RaisedIssue> issues = analyze(relativeFileName, check);
+    List<DockerVerifier1.RaisedIssue> issues = analyze(relativeFileName, check);
     Assertions.assertThat(issues)
         .as("Expected no issue on %s", relativeFileName)
         .isEmpty();
   }
 
-  public static void verifyIssues(String relativeFileName, IacCheck check, DockerVerifier.ExpectedIssue... expected) {
-    List<DockerVerifier.RaisedIssue> actual = analyze(relativeFileName, check);
-    List<DockerVerifier.ExpectedIssue> asExpected = actual.stream()
-        .map(i -> new DockerVerifier.ExpectedIssue(i.line(), i.message()))
-        .sorted(Comparator.comparingInt((DockerVerifier.ExpectedIssue e) -> e.line()).thenComparing(DockerVerifier.ExpectedIssue::message))
+  public static void verifyIssues(String relativeFileName, IacCheck check, DockerVerifier1.ExpectedIssue... expected) {
+    List<DockerVerifier1.RaisedIssue> actual = analyze(relativeFileName, check);
+    List<DockerVerifier1.ExpectedIssue> asExpected = actual.stream()
+        .map(i -> new DockerVerifier1.ExpectedIssue(i.line(), i.message()))
+        .sorted(Comparator.comparingInt((DockerVerifier1.ExpectedIssue e) -> e.line()).thenComparing(DockerVerifier1.ExpectedIssue::message))
         .toList();
-    List<DockerVerifier.ExpectedIssue> wantedSorted = Arrays.stream(expected)
-        .sorted(Comparator.comparingInt((DockerVerifier.ExpectedIssue e) -> e.line()).thenComparing(DockerVerifier.ExpectedIssue::message))
+    List<DockerVerifier1.ExpectedIssue> wantedSorted = Arrays.stream(expected)
+        .sorted(Comparator.comparingInt((DockerVerifier1.ExpectedIssue e) -> e.line()).thenComparing(DockerVerifier1.ExpectedIssue::message))
         .toList();
     Assertions.assertThat(asExpected)
         .as("Mismatch on %s", relativeFileName)
         .containsExactlyElementsOf(wantedSorted);
   }
 
-  public static List<DockerVerifier.RaisedIssue> analyze(String relativeFileName, IacCheck check) {
+  public static List<DockerVerifier1.RaisedIssue> analyze(String relativeFileName, IacCheck check) {
     Path path = BASE_DIR.resolve(relativeFileName);
     String content;
     try {
@@ -92,7 +92,7 @@ public final class K8sYamlVerifier {
 
   private static final class CollectingContext extends TreeContext implements InitContext, CheckContext {
     private final TreeVisitor<CollectingContext> visitor = new TreeVisitor<>();
-    private final List<DockerVerifier.RaisedIssue> issues = new ArrayList<>();
+    private final List<DockerVerifier1.RaisedIssue> issues = new ArrayList<>();
 
     void scan(Tree root) {
       visitor.scan(this, root);
@@ -105,7 +105,7 @@ public final class K8sYamlVerifier {
 
     @Override
     public void reportIssue(TextRange textRange, String message) {
-      issues.add(new DockerVerifier.RaisedIssue(textRange.start().line(), message));
+      issues.add(new DockerVerifier1.RaisedIssue(textRange.start().line(), message));
     }
 
     @Override

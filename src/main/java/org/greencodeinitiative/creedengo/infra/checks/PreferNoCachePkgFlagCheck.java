@@ -57,6 +57,6 @@ public class PreferNoCachePkgFlagCheck implements IacCheck {
           && !cmd.contains("--no-cache")) {
         ctx.reportIssue(run, MSG_NPM);
       }
-    }**/);
+    });**/
   }
 }

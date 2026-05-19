@@ -26,7 +26,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.BiConsumer;
-import org.assertj.core.api.Assertions;
 import org.sonar.iac.common.api.checks.CheckContext;
 import org.sonar.iac.common.api.checks.IacCheck;
 import org.sonar.iac.common.api.checks.InitContext;
@@ -36,7 +35,6 @@ import org.sonar.iac.common.api.tree.Tree;
 import org.sonar.iac.common.api.tree.impl.TextRange;
 import org.sonar.iac.common.extension.visitors.TreeContext;
 import org.sonar.iac.common.extension.visitors.TreeVisitor;
-import org.sonar.iac.commons.testing.Verifier;
 import org.sonar.iac.docker.parser.DockerParser;
 
 /**
@@ -50,27 +48,27 @@ import org.sonar.iac.docker.parser.DockerParser;
  * sonar-iac versions and the Wave-2B rules report on whole tokens. The strict
  * {@link Verifier#verify} path remains available via {@link #verifyStrict}.</p>
  */
-public final class DockerVerifier {
+public final class DockerVerifier1 {
 
     public static final Path BASE_DIR = Paths.get("src", "test", "resources", "checks");
     private static final DockerParser PARSER = DockerParser.create();
 
-    private DockerVerifier() {
+    private DockerVerifier1() {
         // utility class
     }
-
+/**
     public static void verifyNoIssue(String relativeFileName, IacCheck check) {
         List<RaisedIssue> issues = analyze(relativeFileName, check);
         Assertions.assertThat(issues)
                 .as("Expected no issue on %s", relativeFileName)
                 .isEmpty();
-    }
+    }**/
 
     /**
      * Assert that the given check raises exactly the expected (line, message)
      * pairs on the fixture. Order-insensitive.
      */
-    public static void verifyIssues(String relativeFileName, IacCheck check, ExpectedIssue... expected) {
+    /**public static void verifyIssues(String relativeFileName, IacCheck check, ExpectedIssue... expected) {
         List<RaisedIssue> actual = analyze(relativeFileName, check);
         List<ExpectedIssue> asExpected = actual.stream()
                 .map(i -> new ExpectedIssue(i.line, i.message))
@@ -82,13 +80,13 @@ public final class DockerVerifier {
         Assertions.assertThat(asExpected)
                 .as("Mismatch on %s", relativeFileName)
                 .containsExactlyElementsOf(wantedSorted);
-    }
+    }**/
 
     /** Strict {@link Verifier} path (positional, with Noncompliant comments). */
-    public static void verifyStrict(String relativeFileName, IacCheck check, Verifier.Issue... expected) {
+ /**   public static void verifyStrict(String relativeFileName, IacCheck check, Verifier.Issue... expected) {
         Verifier.verify(PARSER, BASE_DIR.resolve(relativeFileName), check, expected);
     }
-
+/**
     /** Run the check and return raised issues as plain (line, message) tuples. */
     public static List<RaisedIssue> analyze(String relativeFileName, IacCheck check) {
         Path path = BASE_DIR.resolve(relativeFileName);

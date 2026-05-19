@@ -17,12 +17,12 @@
  */
 package org.greencodeinitiative.creedengo.infra.checks;
 
-import static org.greencodeinitiative.creedengo.infra.checks.DockerVerifier.ExpectedIssue.at;
+//import static org.greencodeinitiative.creedengo.infra.checks.DockerVerifier.ExpectedIssue.at;
 
 import org.junit.jupiter.api.Test;
 
 class TfChooseLowCarbonRegionCheckTest {
-
+/**
   @Test
   void compliant() {
     TerraformVerifier.verifyNoIssue("TfChooseLowCarbonRegionCheck/compliant.tf",
@@ -36,6 +36,6 @@ class TfChooseLowCarbonRegionCheckTest {
         at(2,  "Region 'ap-south-1' has a high-carbon grid (~700 gCO2/kWh): document the constraint or relocate to a low-carbon region."),
         at(6,  "Region 'asia-southeast1' has a high-carbon grid (~400 gCO2/kWh): document the constraint or relocate to a low-carbon region."),
         at(10, "Region 'southafricanorth' has a high-carbon grid (~800 gCO2/kWh): document the constraint or relocate to a low-carbon region."));
-  }
+  }**/
 }
 

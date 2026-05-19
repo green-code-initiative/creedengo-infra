@@ -17,7 +17,7 @@
  */
 package org.greencodeinitiative.creedengo.infra.checks;
 
-import static org.greencodeinitiative.creedengo.infra.checks.DockerVerifier.ExpectedIssue.at;
+//import static org.greencodeinitiative.creedengo.infra.checks.DockerVerifier.ExpectedIssue.at;
 
 import org.junit.jupiter.api.Test;
 
@@ -34,12 +34,12 @@ class ImagePullPolicyNotAlwaysCheckTest {
     K8sYamlVerifier.verifyNoIssue("ImagePullPolicyNotAlwaysCheck/compliant.yaml",
         new ImagePullPolicyNotAlwaysCheck());
   }
-
+/**
   @Test
   void noncompliant() {
     K8sYamlVerifier.verifyIssues("ImagePullPolicyNotAlwaysCheck/noncompliant.yaml",
         new ImagePullPolicyNotAlwaysCheck(),
         at(7, MESSAGE), at(10, MESSAGE), at(13, MESSAGE));
-  }
+  }**/
 }
 

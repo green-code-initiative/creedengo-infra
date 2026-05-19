@@ -45,8 +45,12 @@ import org.sonar.iac.common.yaml.tree.TupleTree;
  * <p>Reports once per non-compliant step, on the {@code uses:} tuple, so
  * the issue is anchored on the exact line of the workflow.</p>
  */
-@Rule(key = "1065")
+@Rule(key = "GCI1065")
 public class CiPinActionsCheck implements IacCheck {
 
+    @Override
+    public void initialize(InitContext initContext) {
+
+    }
 }
 

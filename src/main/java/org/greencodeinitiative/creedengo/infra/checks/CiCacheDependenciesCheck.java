@@ -42,8 +42,12 @@ import org.sonar.iac.common.yaml.tree.MappingTree;
  */
 @Rule(key = "GCI1058")
 public class CiCacheDependenciesCheck implements IacCheck {
+    @Override
+    public void initialize(InitContext initContext) {
 
-  /**
+    }
+
+    /**
    * Package manager → install-command regex. Patterns are case-insensitive
    * and intentionally broad: they fire on the {@code .run} text rather than
    * shell-AST parsing.

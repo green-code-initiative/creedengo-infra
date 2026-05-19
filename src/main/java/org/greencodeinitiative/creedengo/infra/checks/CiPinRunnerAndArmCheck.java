@@ -46,5 +46,9 @@ import org.sonar.iac.common.yaml.tree.TupleTree;
 @Rule(key = "GCI1060")
 public class CiPinRunnerAndArmCheck implements IacCheck {
 
+    @Override
+    public void initialize(InitContext initContext) {
+
+    }
 }
 

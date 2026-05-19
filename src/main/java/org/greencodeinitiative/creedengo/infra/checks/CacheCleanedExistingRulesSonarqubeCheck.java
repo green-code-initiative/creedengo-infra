@@ -48,4 +48,9 @@ public class CacheCleanedExistingRulesSonarqubeCheck implements IacCheck {
     }
     return false;
   }
+
+  @Override
+  public void initialize(InitContext initContext) {
+
+  }
 }

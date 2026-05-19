@@ -48,6 +48,6 @@ public class PinBaseImageDigestCheck implements IacCheck {
         return;
       }
       ctx.reportIssue(from.image(), MESSAGE);
-    }**/);
+    });**/
   }
 }
