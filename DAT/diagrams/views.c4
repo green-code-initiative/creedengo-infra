@@ -1,0 +1,93 @@
+/**
+ * LikeC4 - Vues creedengo-infra.
+ */
+views {
+
+  // ============================================================
+  // C4 niveau 1 : Contexte systeme
+  // ============================================================
+  view contexte of creedengoInfra {
+    title 'Contexte - creedengo-infra dans son ecosysteme'
+    description 'Place le plugin parmi ses acteurs et systemes externes.'
+
+    include *
+    include developer, contributor, devops
+    include sonarqube, scanner, iacRepo, rulesSpecs, sonarIac
+
+    autoLayout LeftRight
+  }
+
+  // ============================================================
+  // C4 niveau 2 : Containers du plugin
+  // ============================================================
+  view containers of creedengoInfra {
+    title 'Containers - le JAR plugin et ses ressources'
+    description 'Decompose creedengo-infra en JAR + ressources embarquees.'
+
+    include creedengoInfra
+    include creedengoInfra.pluginJar
+    include creedengoInfra.profilesJson
+    include sonarqube.plugins
+    include sonarqube.rulesEngine
+    include rulesSpecs
+    include sonarIac
+
+    autoLayout TopBottom
+  }
+
+  // ============================================================
+  // C4 niveau 3 : Composants internes du JAR
+  // ============================================================
+  view components of creedengoInfra.pluginJar {
+    title 'Composants - architecture interne du JAR'
+    description 'Cablage entre InfraPlugin, RulesDefinition, QualityProfile, CheckRegistrar, AbstractInfraIacSensor, sensors concrets, checks et utils.'
+
+    include *
+    include sonarqube.rulesEngine
+    include creedengoInfra.profilesJson
+    include rulesSpecs
+    include sonarIac
+
+    autoLayout TopBottom
+  }
+
+  // ============================================================
+  // Vue focalisee : cycle de vie d une regle
+  // ============================================================
+  view ruleLifecycle of creedengoInfra.pluginJar {
+    title 'Cycle de vie d une regle - du Check au scan'
+    description 'Composants traverses pour qu une regle GCI soit publiee ET executee : Check -> CheckRegistrar -> RulesDefinition + QualityProfile + Sensor.'
+
+    include creedengoInfra.pluginJar.checks
+    include creedengoInfra.pluginJar.checkRegistrars
+    include creedengoInfra.pluginJar.rulesDefinitions
+    include creedengoInfra.pluginJar.qualityProfiles
+    include creedengoInfra.pluginJar.abstractSensor
+    include creedengoInfra.pluginJar.perLangSensors
+    include creedengoInfra.pluginJar.infraPlugin
+    include creedengoInfra.profilesJson
+    include rulesSpecs
+    include sonarqube.rulesEngine
+
+    autoLayout LeftRight
+  }
+
+  // ============================================================
+  // Vue focalisee : flot d execution au scan
+  // ============================================================
+  view scanFlow of creedengoInfra.pluginJar {
+    title 'Flot d execution au scan'
+    description 'Sequence declenchee par sonar-scanner : filtrage des regles actives, parsing du fichier, visite AST, NewIssue.'
+
+    include scanner
+    include iacRepo
+    include sonarqube.rulesEngine
+    include creedengoInfra.pluginJar.perLangSensors
+    include creedengoInfra.pluginJar.abstractSensor
+    include creedengoInfra.pluginJar.checks
+    include sonarIac
+
+    autoLayout LeftRight
+  }
+}
+

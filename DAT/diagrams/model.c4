@@ -1,0 +1,82 @@
+/**
+ * LikeC4 - Modele creedengo-infra.
+ */
+model {
+  // Acteurs
+  developer = actor 'Developpeur IaC' {
+    description 'Ecrit du code IaC et consulte les issues Sonar.'
+  }
+  contributor = actor 'Contributeur plugin' {
+    description 'Ajoute / maintient les regles creedengo-infra.'
+  }
+  devops = actor 'DevOps / SRE' {
+    description 'Administre SonarQube, deploie le JAR plugin.'
+  }
+  // Systemes externes
+  sonarqube = system 'SonarQube Server' {
+    description 'Plateforme analyse statique (9.9 LTA - 25.3).'
+    plugins = container 'extensions/plugins/' {
+      description 'Repertoire des plugins tiers.'
+      style { shape storage }
+    }
+    rulesEngine = container 'Rules engine' {
+      description 'Indexation des regles, profils, dispatch des sensors.'
+    }
+  }
+  scanner = system 'sonar-scanner' {
+    description 'CLI client qui declenche les sensors et envoie les issues.'
+  }
+  iacRepo = system 'Repo IaC analyse' {
+    description 'Projet client (Dockerfile / *.tf / manifests / CFN /     de    style { shape storage }
+  }
+  rulesSpecs = system 'creedengo-rules-specifications' {
+    description 'Artefact Maven multi-classifier metadata HTML+JSON.'
+    style { shape stora    style { shape stora    style { shape stnarSource)' {
+    description 'Parsers AST officiels Docker / k8s / Terr    description 'Parsers   // Systeme cible : le plugin
+  creedengoInfra = system 'creedengo-infra plugin' {
+    description    description    description    descrs sur le code IaC.'
+    pluginJar = container 'creedengo-infra-plugin.jar' {
+      description 'Artefact Maven (packaging sonar-plugin).'
+      technology 'Java 17 - sonar-plugin-api 12'
+      infraPlu      infraPlu      infraPlu      infraPluscription 'Point entree Sonar - declare toutes les extensions.'
+      }
+      rulesDefi    ons = component 'InfraLangRulesDefinition x5' {
+        description 'Publient un repository creedengo-infra-<lang> par langage.'
+      }
+      qualityProfiles = component 'InfraLangQualityProfile x5' {
+        description 'Profil creedengo way par langage.'
+      }
+      checkRegistrars = component 'InfraLangCheckRegistrar x5' {
+        description 'Liste statique ANNOTATED_RULE_CLASSES (source de verite).'
+      }
+      abstractSensor = component 'AbstractInfraIacSensor' {
+        description 'Squelette : describe / buildActiveChecks / parse / scan / NewIssue.'
+      }
+      perLangSensors = component 'InfraLangSensor x5' {
+        description 'Sensors concrets (Docker / k8s / Terraform / CFN / YAML)        description 'Sensors concrets (Docker / k8s rs tr        description 'Sensors concrets (Docker / k8s / TerradCrossRef - HelmValuesEco.'
+      }
+      checks =       checks =       checks =       checks =       checks =       checks =       checks =       checks =       checks   checkUtils = component 'CheckUtils partages' {
+        description 'Docker/Kubernetes/Terraform/CiYaml CheckUtils.'
+      }
+    }
+    profilesJson = container 'creedengo_way_profile.json' {
+      description 'Resources embarquees      description 'Resources embarquees           style { shape       description 'Resources embarquees      descriptiono 'edite'      description 'Resources embarquees      description 'Resources embarqueenche en local / CI'
+  devops -> sonarqube 'administre'
+  devops -> sona  devops -> sona  devops -> sona  devops -> sona  devops -> sona  devops -> sona  devopcanner -> iacRepo 'lit les fichiers IaC'
+  scanner -> sonarqube 'transmet les issues'
+  sonarqube.rulesEngine -> creedengoInfra.pluginJar 'instancie les extensions'
+  creedengoInfra.pluginJar.infraPlugin -> creedengoInfra.pluginJar.rulesDefinitions 'addExtension'
+  creedengoInfra.pluginJar.infraPlugin -> creedengoInfra.pluginJar.qualityProfiles 'addExtension'
+  creedengoInfra.pluginJar.infraPlugin -> creedengoInfra.pluginJar.perLangSensors 'addExtension'
+  creedengoInfra.pluginJar.infraPlugin -> creedengoInfra.pluginJar.crossFileSensors 'addExtensio  c  creedengoInfra.pluginJar.rulesDefinitions -> creedengoInfra.pluginJar.checkRegistrars 'lit ANNOTATED_RULE_CLASSES'
+  creedengoInfra.pluginJar.rulesDefinitions -> rulesSpecs 'RuleMetadataLoader (HTML+JSON)'
+  creedengoInfra.pluginJar.rulesDefinitions -> sonarqube.rulesEngine 'cree le repository'
+  creedengoInfra.pluginJar.qualityProfiles -> creedengoInfra.profilesJson 'charge ruleKeys'
+  creedengoInfra.pluginJar.qualityProfiles -> sonarqube.rulesEngine 'enregistre creedengo way'
+  creedengoInfra.pluginJar.perLangSensors -> creedengoInfra.pluginJar.abstractSensor 'herite de'
+  creedengoInfra.pluginJar.perLangSensors -> creedengoInfra.pluginJar.checkRegistrars 'checkClasses()'
+  creedengoInfra.pluginJar.perLangSensors -> sonarIac 'DockerParser / YamlParser / HclParser'
+  creedengoInfra.pluginJar.abstractSensor -> creedengoInfra.pluginJar.checks 'instancie + visite AST'
+  creedengoInfra.pluginJar.abstractSensor -> sonarqube.rulesEngine 'newIssue() sur le repo'
+  creedengoInfra.pluginJar.checks -> creedengoInfra.pluginJar.checkUtils 'utilise'
+  creedengoInfra.pluginJar.checks -> sonarIac 'Tree API (Body, MappingTree, BlockTree  creedengoInfra.pluginJar.checks -> sonarIac 'Tree API (Body, MappingTree, BlockTree  c}

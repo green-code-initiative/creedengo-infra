@@ -1,0 +1,75 @@
+/**
+ * LikeC4 - Vues dynamiques (sequences) creedengo-infra.
+ *
+ * Decrivent les flots temporels :
+ *  - addRule        : etapes pour qu'une nouvelle regle devienne active.
+ *  - serverStartup  : enregistrement des extensions au demarrage SonarQube.
+ *  - scanExecution  : execution d'un scan sur un fichier IaC.
+ */
+views {
+
+  // ============================================================
+  // SEQUENCE 1 : Ajout d'une nouvelle regle (Check -> Plugin)
+  // ============================================================
+  dynamic view addRule {
+    title 'Ajout d une nouvelle regle - Check vers Plugin'
+    description 'Les 6 maillons indispensables pour qu une regle GCIxxxx soit publiee, activee et executee.'
+
+    contributor -> creedengoInfra.pluginJar.checks               '1. Cree <Name>Check (@Rule(key=GCI...))'
+    contributor -> creedengoInfra.pluginJar.checkRegistrars      '2. Ajoute la classe a ANNOTATED_RULE_CLASSES'
+    contributor -> rulesSpecs                                    '3. Fournit metadata HTML+JSON (ou via PR upstream)'
+    contributor -> creedengoInfra.profilesJson                   '4. Ajoute la ruleKey dans creedengo_way_profile_<lang>.json'
+    creedengoInfra.pluginJar.rulesDefinitions -> creedengoInfra.pluginJar.checkRegistrars 'lit ANNOTATED_RULE_CLASSES'
+    creedengoInfra.pluginJar.rulesDefinitions -> rulesSpecs                                'charge HTML+JSON via RuleMetadataLoader'
+    creedengoInfra.pluginJar.rulesDefinitions -> sonarqube.rulesEngine                     '5a. publie la regle dans creedengo-infra-<lang>'
+    creedengoInfra.pluginJar.qualityProfiles -> creedengoInfra.profilesJson                'charge ruleKeys'
+    creedengoInfra.pluginJar.qualityProfiles -> sonarqube.rulesEngine                      '5b. active la regle dans creedengo way'
+    creedengoInfra.pluginJar.perLangSensors -> creedengoInfra.pluginJar.checkRegistrars   'recupere checkClasses()'
+    creedengoInfra.pluginJar.perLangSensors -> creedengoInfra.pluginJar.checks            '6. instancie et execute le Check au scan'
+
+    autoLayout LeftRight
+  }
+
+  // ============================================================
+  // SEQUENCE 2 : Demarrage du serveur SonarQube
+  // ============================================================
+  dynamic view serverStartup {
+    title 'Demarrage SonarQube - enregistrement des extensions'
+    description 'Sequence au boot du serveur : InfraPlugin.define() est invoque, chaque extension est instanciee et publie son etat.'
+
+    sonarqube.rulesEngine -> creedengoInfra.pluginJar.infraPlugin       'instancie InfraPlugin'
+    creedengoInfra.pluginJar.infraPlugin -> creedengoInfra.pluginJar.rulesDefinitions  'addExtension (x5)'
+    creedengoInfra.pluginJar.infraPlugin -> creedengoInfra.pluginJar.qualityProfiles   'addExtension (x5)'
+    creedengoInfra.pluginJar.infraPlugin -> creedengoInfra.pluginJar.perLangSensors    'addExtension (x5)'
+    creedengoInfra.pluginJar.rulesDefinitions -> rulesSpecs                            'charge metadata HTML+JSON'
+    creedengoInfra.pluginJar.rulesDefinitions -> sonarqube.rulesEngine                 'cree repository creedengo-infra-<lang>'
+    creedengoInfra.pluginJar.qualityProfiles -> creedengoInfra.profilesJson            'lit creedengo_way_profile_<lang>.json'
+    creedengoInfra.pluginJar.qualityProfiles -> sonarqube.rulesEngine                  'enregistre profil creedengo way'
+
+    autoLayout LeftRight
+  }
+
+  // ============================================================
+  // SEQUENCE 3 : Execution d un scan sur un fichier IaC
+  // ============================================================
+  dynamic view scanExecution {
+    title 'Execution d un scan - du fichier IaC a l issue Sonar'
+    description 'Sequence d appels declenchee par sonar-scanner sur le projet client : describe, buildActiveChecks, parse, scan AST, reportIssue, NewIssue.'
+
+    developer -> scanner                                          'lance sonar-scanner'
+    scanner -> sonarqube.rulesEngine                              'connecte avec token'
+    sonarqube.rulesEngine -> creedengoInfra.pluginJar.perLangSensors 'describe + execute(SensorContext)'
+    creedengoInfra.pluginJar.perLangSensors -> creedengoInfra.pluginJar.abstractSensor 'buildActiveChecks()'
+    creedengoInfra.pluginJar.abstractSensor -> sonarqube.rulesEngine 'activeRules.find(RuleKey)'
+    creedengoInfra.pluginJar.perLangSensors -> iacRepo            'inputFiles(language)'
+    creedengoInfra.pluginJar.perLangSensors -> sonarIac           'parse(content) -> Tree'
+    creedengoInfra.pluginJar.abstractSensor -> creedengoInfra.pluginJar.checks 'check.initialize(SensorCheckContext)'
+    creedengoInfra.pluginJar.abstractSensor -> creedengoInfra.pluginJar.checks 'visitor.scan(root)'
+    creedengoInfra.pluginJar.checks -> creedengoInfra.pluginJar.abstractSensor 'ctx.reportIssue(tree, msg)'
+    creedengoInfra.pluginJar.abstractSensor -> sonarqube.rulesEngine 'newIssue().forRule(key).save()'
+    sonarqube.rulesEngine -> developer                            'issue visible dans SonarQube UI'
+
+    autoLayout LeftRight
+  }
+}
+
