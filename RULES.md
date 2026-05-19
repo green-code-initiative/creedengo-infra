@@ -74,6 +74,7 @@ Authoritative metadata source: [`creedengo-rules-specifications`](../creedengo-r
 | 1055 | [tfavoidalwaysonresources](savespottedrules/tfavoidalwaysonresources.md) **(impl)** | Major | Medium | ⚠️ |
 | 1056 | [tfpreferspotorsavings](savespottedrules/tfpreferspotorsavings.md) **(impl)** | Info | Hard | ⚠️ |
 | 1057 | [cfnprefergravitonlowcarbon](savespottedrules/cfnprefergravitonlowcarbon.md) **(impl)** | Minor | Medium | ✅ |
+| 1066 | [tfmultiregionandserverlesshint](tfmultiregionandserverlesshint.md) **(impl)** | Info | Easy | ✅ |
 
 ### IaC transverse — new (1058–1065)
 

@@ -39,7 +39,8 @@ public final class InfraTerraformCheckRegistrar {
       org.greencodeinitiative.creedengo.infra.checks.TfStorageLifecycleRulesCheck.class,     // GCI1053
       org.greencodeinitiative.creedengo.infra.checks.TfChooseLowCarbonRegionCheck.class,     // GCI1054
       org.greencodeinitiative.creedengo.infra.checks.TfAvoidAlwaysOnResourcesCheck.class,    // GCI1055
-      org.greencodeinitiative.creedengo.infra.checks.TfPreferSpotOrSavingsCheck.class        // GCI1056
+      org.greencodeinitiative.creedengo.infra.checks.TfPreferSpotOrSavingsCheck.class,       // GCI1056
+      org.greencodeinitiative.creedengo.infra.checks.TfMultiRegionAndServerlessHintCheck.class // GCI1066
   );
 
   private InfraTerraformCheckRegistrar() {
