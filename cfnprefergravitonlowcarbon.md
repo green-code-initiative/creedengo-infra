@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1057.)_
+_(Proposed rule for creedengo-infra — 1057.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ CloudFormation: prefer Graviton & low-carbon region defaults
 
 ### **Rule key**
 
-GCI1057
+1057
 
 ### **Language and platform**
 
@@ -14,7 +14,7 @@ AWS CloudFormation / SAM / CDK-synthesized templates
 
 ### **Rule description**
 
-CloudFormation (and CDK synthesis output) mirrors the same anti-patterns as Terraform: `InstanceType: m6i.large` defaults, `eu-west-2` chosen "because we already had a VPC there" etc. This rule is the CloudFormation counterpart of `GCI1050` (Graviton) and `GCI1054` (low-carbon region), enforced on `AWS::EC2::*`, `AWS::AutoScaling::*`, `AWS::RDS::*`, `AWS::ECS::*` resources.
+CloudFormation (and CDK synthesis output) mirrors the same anti-patterns as Terraform: `InstanceType: m6i.large` defaults, `eu-west-2` chosen "because we already had a VPC there" etc. This rule is the CloudFormation counterpart of `1050` (Graviton) and `1054` (low-carbon region), enforced on `AWS::EC2::*`, `AWS::AutoScaling::*`, `AWS::RDS::*`, `AWS::ECS::*` resources.
 
 _Noncompliant Code Example_
 
@@ -44,7 +44,7 @@ CloudFormation compute/DB/ECS resources should default to Graviton (`m7g`, `c7g`
 
 ### **Rule justification**
 
-**Why it matters**: same as `GCI1050`.
+**Why it matters**: same as `1050`.
 
 **Eco-design rationale** (axes 3·5):
 - **Runtime energy**: -20 % to -40 % at equivalent throughput (Graviton).

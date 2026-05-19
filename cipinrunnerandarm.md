@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1060.)_
+_(Proposed rule for creedengo-infra — 1060.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Pin CI runner versions and prefer ARM runners
 
 ### **Rule key**
 
-GCI1060
+1060
 
 ### **Language and platform**
 

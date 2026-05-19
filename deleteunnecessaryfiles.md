@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1028.)_
+_(Proposed rule for creedengo-infra — 1028.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Provide and curate a `.dockerignore` file
 
 ### **Rule key**
 
-GCI1028
+1028
 
 ### **Language and platform**
 

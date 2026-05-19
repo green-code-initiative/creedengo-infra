@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1042.)_
+_(Proposed rule for creedengo-infra — 1042.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Keep a reasonable `request` vs `limit` ratio (1× to 4×)
 
 ### **Rule key**
 
-GCI1042
+1042
 
 ### **Language and platform**
 

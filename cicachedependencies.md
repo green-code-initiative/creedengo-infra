@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1058.)_
+_(Proposed rule for creedengo-infra — 1058.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ CI workflows must cache dependencies
 
 ### **Rule key**
 
-GCI1058
+1058
 
 ### **Language and platform**
 
@@ -92,7 +92,7 @@ Remediation cost: **Easy** — add 3-5 YAML lines.
           if any step.run matches BUILD_REGEX:
               if no cache step targets the matching package manager:
                   report(step, "Add a cache step for " + manager)
-  BUILD_REGEX = same as GCI1025 INSTALL_REGEX
+  BUILD_REGEX = same as 1025 INSTALL_REGEX
   ```
 
 - Known false positives: workflows running on self-hosted runners with persistent volumes — opt-out via comment `# eco-design:ignore`.

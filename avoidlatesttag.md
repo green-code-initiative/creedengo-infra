@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1031.)_
+_(Proposed rule for creedengo-infra — 1031.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Do not use the `latest` tag (or implicit tag) on base images
 
 ### **Rule key**
 
-GCI1031
+1031
 
 ### **Language and platform**
 

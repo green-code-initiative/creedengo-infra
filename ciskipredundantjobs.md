@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1059.)_
+_(Proposed rule for creedengo-infra — 1059.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ CI: skip redundant jobs (paths filter, `concurrency`, draft PRs)
 
 ### **Rule key**
 
-GCI1059
+1059
 
 ### **Language and platform**
 

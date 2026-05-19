@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1065.)_
+_(Proposed rule for creedengo-infra — 1065.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Pin third-party CI actions to an immutable SHA
 
 ### **Rule key**
 
-GCI1065
+1065
 
 ### **Language and platform**
 

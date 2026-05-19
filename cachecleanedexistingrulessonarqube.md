@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1029. Extension of SonarSource RSPEC-6587.)_
+_(Proposed rule for creedengo-infra — 1029. Extension of SonarSource RSPEC-6587.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Clean package manager caches inside the same RUN
 
 ### **Rule key**
 
-GCI1029
+1029
 
 ### **Language and platform**
 

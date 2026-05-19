@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1034.)_
+_(Proposed rule for creedengo-infra — 1034.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Expose only the ports actually used at runtime
 
 ### **Rule key**
 
-GCI1034
+1034
 
 ### **Language and platform**
 
