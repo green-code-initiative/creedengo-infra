@@ -29,16 +29,16 @@ public final class InfraKubernetesCheckRegistrar {
 
   public static final List<Class<?>> ANNOTATED_RULE_CLASSES = List.of(
       org.greencodeinitiative.creedengo.infra.checks.UseOfProbesCheck.class,
-      org.greencodeinitiative.creedengo.infra.checks.SetResourceRequestsCheck.class,
-      org.greencodeinitiative.creedengo.infra.checks.SetResourceLimitsCheck.class,
-      org.greencodeinitiative.creedengo.infra.checks.CpuRequestVsLimitRatioCheck.class,
-      org.greencodeinitiative.creedengo.infra.checks.ReplicasGreaterThanNeededCheck.class,
+      //org.greencodeinitiative.creedengo.infra.checks.SetResourceRequestsCheck.class,
+      //org.greencodeinitiative.creedengo.infra.checks.SetResourceLimitsCheck.class,
+      org.greencodeinitiative.creedengo.infra.checks.CpuRequestVsLimitRatioCheck.class//,
+      /**org.greencodeinitiative.creedengo.infra.checks.ReplicasGreaterThanNeededCheck.class,
       org.greencodeinitiative.creedengo.infra.checks.RequireHpaForDeploymentCheck.class,
       org.greencodeinitiative.creedengo.infra.checks.PreferVpaOrRightsizingCheck.class,
       org.greencodeinitiative.creedengo.infra.checks.ImagePullPolicyNotAlwaysCheck.class,
       org.greencodeinitiative.creedengo.infra.checks.RestrictHostNetworkHostPidCheck.class,
       org.greencodeinitiative.creedengo.infra.checks.PreferPdbForRollingEcoCheck.class,
-      org.greencodeinitiative.creedengo.infra.checks.HelmValuesDefaultsEcoCheck.class
+      org.greencodeinitiative.creedengo.infra.checks.HelmValuesDefaultsEcoCheck.class**/
   );
 
   private InfraKubernetesCheckRegistrar() {

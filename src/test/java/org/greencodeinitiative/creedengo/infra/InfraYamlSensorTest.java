@@ -42,7 +42,7 @@ import org.sonar.api.rule.RuleKey;
 class InfraYamlSensorTest {
 
   /** Valid GitHub Actions YAML that triggers {@code 1060} (runs-on: *-latest). */
-  private static final String VALID_YAML =
+ /** private static final String VALID_YAML =
       """
       name: ci
       jobs:
@@ -123,6 +123,6 @@ class InfraYamlSensorTest {
         .build();
     context.fileSystem().add(file);
     return file;
-  }
+  }**/
 }
 

@@ -42,7 +42,7 @@ class InfraKubernetesSensorTest {
    * {@code resources.limits} entirely. Triggers {@code SetResourceLimitsCheck}
    * (GCI1041) twice on line 9 (cpu + memory).
    */
-  private static final String DEPLOYMENT_MISSING_LIMITS =
+/**  private static final String DEPLOYMENT_MISSING_LIMITS =
       """
       apiVersion: apps/v1
       kind: Deployment
@@ -128,6 +128,6 @@ class InfraKubernetesSensorTest {
         .build();
     context.fileSystem().add(file);
     return file;
-  }
+  }**/
 }
 

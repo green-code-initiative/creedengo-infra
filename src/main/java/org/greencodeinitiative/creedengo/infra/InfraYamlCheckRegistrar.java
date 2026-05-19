@@ -28,14 +28,14 @@ import java.util.List;
 public final class InfraYamlCheckRegistrar {
 
   public static final List<Class<?>> ANNOTATED_RULE_CLASSES = List.of(
-      org.greencodeinitiative.creedengo.infra.checks.CiCacheDependenciesCheck.class,
+      /**org.greencodeinitiative.creedengo.infra.checks.CiCacheDependenciesCheck.class,
       org.greencodeinitiative.creedengo.infra.checks.CiSkipRedundantJobsCheck.class,
       org.greencodeinitiative.creedengo.infra.checks.CiPinRunnerAndArmCheck.class,
       org.greencodeinitiative.creedengo.infra.checks.CiPinActionsCheck.class,
       org.greencodeinitiative.creedengo.infra.checks.IacNoSecretInPlaintextEcoCheck.class,
       org.greencodeinitiative.creedengo.infra.checks.IacTagEnvironmentEcoCheck.class,
       org.greencodeinitiative.creedengo.infra.checks.IacPrometheusLowRetentionDefaultCheck.class,
-      org.greencodeinitiative.creedengo.infra.checks.IacScheduledScaleDownNonProdCheck.class
+      org.greencodeinitiative.creedengo.infra.checks.IacScheduledScaleDownNonProdCheck.class**/
   );
 
   private InfraYamlCheckRegistrar() {

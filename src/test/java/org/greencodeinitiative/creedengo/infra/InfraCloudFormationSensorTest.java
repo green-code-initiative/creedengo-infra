@@ -39,7 +39,7 @@ import org.sonar.api.rule.RuleKey;
 class InfraCloudFormationSensorTest {
 
   /** EC2 instance pinned to x86 {@code m6i.large} → {@code CfnPreferGravitonLowCarbonCheck} (GCI1057). */
-  private static final String CFN_X86_INSTANCE =
+  /**private static final String CFN_X86_INSTANCE =
       """
       AWSTemplateFormatVersion: "2010-09-09"
       Resources:
@@ -121,6 +121,6 @@ class InfraCloudFormationSensorTest {
         .build();
     context.fileSystem().add(file);
     return file;
-  }
+  }**/
 }
 

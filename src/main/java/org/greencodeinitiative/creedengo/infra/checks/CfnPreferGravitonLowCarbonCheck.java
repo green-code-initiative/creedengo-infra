@@ -78,7 +78,7 @@ public class CfnPreferGravitonLowCarbonCheck implements IacCheck {
     if (instanceType == null) {
       return;
     }
-    String family = TfPreferGravitonArmCheck.parseFamily(instanceType);
+    /**String family = TfPreferGravitonArmCheck.parseFamily(instanceType);
     if (TfPreferGravitonArmCheck.knownX86Families().contains(family)) {
       TupleTree instanceTuple = KubernetesCheckUtils.tuple(properties, "InstanceType")
         .or(() -> KubernetesCheckUtils.tuple(properties, "DBInstanceClass"))
@@ -90,7 +90,7 @@ public class CfnPreferGravitonLowCarbonCheck implements IacCheck {
       } else if (highlight instanceof MappingTree m) {
         ctx.reportIssue(m, message);
       }
-    }
+    }**/
   }
 
   /**
