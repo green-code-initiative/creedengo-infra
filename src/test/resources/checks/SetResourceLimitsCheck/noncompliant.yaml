@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+spec:
+  template:
+    spec:
+      containers:
+        - name: api
+          image: myorg/api:1
+        - name: side
+          image: myorg/side:1
+          resources:
+            limits:
+              cpu: "200m"
