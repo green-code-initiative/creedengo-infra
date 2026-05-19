@@ -3,7 +3,7 @@ name: sonarqube_creedengo_infra
 
 services:
   sonar:
-    image: sonarqube:25.3.0.104237-community
+    image: sonarqube:26.5.0.122743-community
     container_name: sonar_creedengo_infra
     ports:
       - "9000:9000"
@@ -19,7 +19,7 @@ services:
       SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: "true"
     volumes:
       - type: bind
-        source: ./sonar-plugin/target/creedengo-infra-plugin-2.1.1-SNAPSHOT.jar
+        source: ./sonar-plugin/target/creedengo-infra-plugin-feature-initinfraplugin-SNAPSHOT.jar
         target: /opt/sonarqube/extensions/plugins/creedengo-infra-plugin-2.1.1-SNAPSHOT.jar
       - "extensions:/opt/sonarqube/extensions"
       - "logs:/opt/sonarqube/logs"

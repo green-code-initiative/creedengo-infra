@@ -51,7 +51,7 @@ build/
 
 ```gitignore
 # .dockerignore (Maven)
-target/
+sonar-plugin/target/
 .mvn/wrapper/maven-wrapper.jar
 .git
 *.iml

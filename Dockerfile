@@ -7,8 +7,8 @@ FROM maven:${MAVEN_BUILDER} AS builder
 COPY . /usr/src/creedengo
 
 WORKDIR /usr/src/creedengo
-COPY src src/
-COPY pom.xml tool_build.sh ./
+COPY sonar-plugin/src src/
+COPY sonar-plugin/pom.xml tool_build.sh ./
 
 RUN ./tool_build.sh
 

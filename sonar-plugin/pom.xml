@@ -46,7 +46,7 @@
         <encoding>UTF-8</encoding>
         <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
-        <version.creedengo-rules-specifications>main-SNAPSHOT</version.creedengo-rules-specifications>
+        <version.creedengo-rules-specifications>feature-add_creedengoruleinfra-SNAPSHOT</version.creedengo-rules-specifications>
         <version.sonarqube>12.0.0.2960</version.sonarqube>
         <version.sonar-java>8.23.0.42096</version.sonar-java>
         <version.sonar-packaging>1.23.0.740</version.sonar-packaging>

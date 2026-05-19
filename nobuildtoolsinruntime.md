@@ -34,7 +34,7 @@ COPY . /src
 RUN cd /src && ./build.sh
 
 FROM eclipse-temurin:17-jre-alpine
-COPY --from=builder /src/app.jar /app.jar
+COPY --from=builder /sonar-plugin/src/app.jar /app.jar
 CMD ["java", "-jar", "/app.jar"]
 ```
 
