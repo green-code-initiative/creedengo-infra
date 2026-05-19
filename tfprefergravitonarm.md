@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1050.)_
+_(Proposed rule for creedengo-infra — 1050.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Prefer ARM / Graviton / Ampere instance types when available
 
 ### **Rule key**
 
-GCI1050
+1050
 
 ### **Language and platform**
 

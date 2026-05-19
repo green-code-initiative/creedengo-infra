@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1051.)_
+_(Proposed rule for creedengo-infra — 1051.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Avoid over-sized instance types ("xl" defaults)
 
 ### **Rule key**
 
-GCI1051
+1051
 
 ### **Language and platform**
 

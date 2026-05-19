@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1033.)_
+_(Proposed rule for creedengo-infra — 1033.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Prefer `COPY` over `ADD` for local files
 
 ### **Rule key**
 
-GCI1033
+1033
 
 ### **Language and platform**
 

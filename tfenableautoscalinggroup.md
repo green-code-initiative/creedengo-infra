@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1052.)_
+_(Proposed rule for creedengo-infra — 1052.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Compute resources should belong to an autoscaling group / managed instance group
 
 ### **Rule key**
 
-GCI1052
+1052
 
 ### **Language and platform**
 
@@ -52,7 +52,7 @@ Stateless `aws_instance` / `google_compute_instance` / `azurerm_*virtual_machine
 **Eco-design rationale** (axes 3·5·6):
 - **Runtime energy**: capacity tracks demand → fewer idle CPU·s.
 - **Scale-to-fit**: combined with predictive scaling, capacity follows time-of-day patterns.
-- **Provisioning efficiency**: ASGs can integrate with spot/preemptible markets (`GCI1056`).
+- **Provisioning efficiency**: ASGs can integrate with spot/preemptible markets (`1056`).
 
 Sources:
 - https://docs.aws.amazon.com/autoscaling/

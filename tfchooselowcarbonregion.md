@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1054.)_
+_(Proposed rule for creedengo-infra — 1054.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Prefer low-carbon cloud regions
 
 ### **Rule key**
 
-GCI1054
+1054
 
 ### **Language and platform**
 

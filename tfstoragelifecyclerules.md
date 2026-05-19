@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1053.)_
+_(Proposed rule for creedengo-infra — 1053.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Set storage lifecycle rules (tier transitions, expirations)
 
 ### **Rule key**
 
-GCI1053
+1053
 
 ### **Language and platform**
 

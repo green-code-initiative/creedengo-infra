@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1055.)_
+_(Proposed rule for creedengo-infra — 1055.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Avoid always-on resources for non-prod environments
 
 ### **Rule key**
 
-GCI1055
+1055
 
 ### **Language and platform**
 

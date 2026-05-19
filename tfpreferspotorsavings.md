@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1056.)_
+_(Proposed rule for creedengo-infra — 1056.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Prefer Spot / Preemptible / Savings Plan capacity for fault-tolerant workloads
 
 ### **Rule key**
 
-GCI1056
+1056
 
 ### **Language and platform**
 

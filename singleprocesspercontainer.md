@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1038.)_
+_(Proposed rule for creedengo-infra — 1038.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ One main process per container
 
 ### **Rule key**
 
-GCI1038
+1038
 
 ### **Language and platform**
 
