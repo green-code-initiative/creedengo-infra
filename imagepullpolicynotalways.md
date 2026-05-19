@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1046.)_
+_(Proposed rule for creedengo-infra — 1046.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Avoid `imagePullPolicy: Always` on stable tags / digests
 
 ### **Rule key**
 
-GCI1046
+1046
 
 ### **Language and platform**
 
@@ -14,7 +14,7 @@ Kubernetes / Helm
 
 ### **Rule description**
 
-`imagePullPolicy: Always` re-checks the registry on every pod start, even for immutable digest references. The check itself costs round-trips, registry-API CPU and may trigger a re-pull when transient registry behaviour reports a "different" digest. Prefer `IfNotPresent` (the default for non-`:latest` tags) and pin images with digests (`GCI1030`).
+`imagePullPolicy: Always` re-checks the registry on every pod start, even for immutable digest references. The check itself costs round-trips, registry-API CPU and may trigger a re-pull when transient registry behaviour reports a "different" digest. Prefer `IfNotPresent` (the default for non-`:latest` tags) and pin images with digests (`1030`).
 
 _Noncompliant Code Example_
 

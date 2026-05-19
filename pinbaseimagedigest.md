@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1030.)_
+_(Proposed rule for creedengo-infra — 1030.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Pin Docker base images by content digest
 
 ### **Rule key**
 
-GCI1030
+1030
 
 ### **Language and platform**
 

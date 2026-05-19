@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1049.)_
+_(Proposed rule for creedengo-infra — 1049.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Eco-design defaults in Helm `values.yaml`
 
 ### **Rule key**
 
-GCI1049
+1049
 
 ### **Language and platform**
 

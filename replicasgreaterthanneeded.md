@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1043.)_
+_(Proposed rule for creedengo-infra — 1043.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Avoid hard-coded high replica counts without HPA
 
 ### **Rule key**
 
-GCI1043
+1043
 
 ### **Language and platform**
 

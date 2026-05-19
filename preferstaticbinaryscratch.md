@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1039.)_
+_(Proposed rule for creedengo-infra — 1039.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Prefer static binaries on `scratch`/`distroless` for compiled languages
 
 ### **Rule key**
 
-GCI1039
+1039
 
 ### **Language and platform**
 

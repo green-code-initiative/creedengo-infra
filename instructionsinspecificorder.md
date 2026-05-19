@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1027. Refocused from the original draft into 3 auditable sub-rules.)_
+_(Proposed rule for creedengo-infra — 1027. Refocused from the original draft into 3 auditable sub-rules.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Order Dockerfile instructions for cache efficiency
 
 ### **Rule key**
 
-GCI1027
+1027
 
 ### **Language and platform**
 

@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1045.)_
+_(Proposed rule for creedengo-infra — 1045.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Pair workloads with a rightsizing recommender (VPA / KRR / Goldilocks)
 
 ### **Rule key**
 
-GCI1045
+1045
 
 ### **Language and platform**
 

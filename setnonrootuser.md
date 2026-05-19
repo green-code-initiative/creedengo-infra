@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1035.)_
+_(Proposed rule for creedengo-infra — 1035.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Run containers as a non-root `USER`
 
 ### **Rule key**
 
-GCI1035
+1035
 
 ### **Language and platform**
 

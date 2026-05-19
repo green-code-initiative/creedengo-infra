@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1032.)_
+_(Proposed rule for creedengo-infra — 1032.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Merge consecutive `RUN` instructions
 
 ### **Rule key**
 
-GCI1032
+1032
 
 ### **Language and platform**
 

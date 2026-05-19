@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1041.)_
+_(Proposed rule for creedengo-infra — 1041.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Set memory `limits` on every container (and a CPU limit when appropriate)
 
 ### **Rule key**
 
-GCI1041
+1041
 
 ### **Language and platform**
 

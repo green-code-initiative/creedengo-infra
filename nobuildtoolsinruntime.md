@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1036.)_
+_(Proposed rule for creedengo-infra — 1036.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Strip build tools from the runtime image
 
 ### **Rule key**
 
-GCI1036
+1036
 
 ### **Language and platform**
 
@@ -14,7 +14,7 @@ Docker / OCI
 
 ### **Rule description**
 
-Compilers, package managers and SDKs are needed at build time but useless at runtime. Their presence in the final image (`gcc`, `make`, `git`, `mvn`, `npm`, `python-dev`, `build-essential`, `kernel-headers`, …) inflates the layer by 100 MB to 1 GB, drags every cold start, increases CVE surface and triggers needless re-pulls. This rule complements multi-stage builds (`GCI1025`) by detecting explicit installs that should never reach the runtime stage.
+Compilers, package managers and SDKs are needed at build time but useless at runtime. Their presence in the final image (`gcc`, `make`, `git`, `mvn`, `npm`, `python-dev`, `build-essential`, `kernel-headers`, …) inflates the layer by 100 MB to 1 GB, drags every cold start, increases CVE surface and triggers needless re-pulls. This rule complements multi-stage builds (`1025`) by detecting explicit installs that should never reach the runtime stage.
 
 _Noncompliant Code Example_
 
@@ -71,7 +71,7 @@ Measurement:
 
 Severity: **Major** — large, recurring waste.
 
-Remediation cost: **Medium** — refactor into multi-stage (see GCI1025).
+Remediation cost: **Medium** — refactor into multi-stage (see 1025).
 
 ### **Implementation principle**
 

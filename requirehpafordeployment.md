@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1044.)_
+_(Proposed rule for creedengo-infra — 1044.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Production `Deployment`s should declare an HPA
 
 ### **Rule key**
 
-GCI1044
+1044
 
 ### **Language and platform**
 

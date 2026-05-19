@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1061.)_
+_(Proposed rule for creedengo-infra — 1061.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ No secrets in plain text in IaC (eco-design framing)
 
 ### **Rule key**
 
-GCI1061
+1061
 
 ### **Language and platform**
 

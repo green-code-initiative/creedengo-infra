@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1062.)_
+_(Proposed rule for creedengo-infra — 1062.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Tag every cloud resource with `environment` and `owner`
 
 ### **Rule key**
 
-GCI1062
+1062
 
 ### **Language and platform**
 
@@ -14,7 +14,7 @@ Terraform / CloudFormation / docker-compose / Kubernetes labels
 
 ### **Rule description**
 
-Eco-design depends on **observability**: you cannot reduce what you cannot attribute. Tagging every resource with at least `environment` (prod/staging/dev) and `owner` (team) unlocks: rightsizing reports per team, scheduled scale-down of non-prod (`GCI1055`, `GCI1064`), Cloud Carbon Footprint per business unit, automated cleanup of orphan resources.
+Eco-design depends on **observability**: you cannot reduce what you cannot attribute. Tagging every resource with at least `environment` (prod/staging/dev) and `owner` (team) unlocks: rightsizing reports per team, scheduled scale-down of non-prod (`1055`, `1064`), Cloud Carbon Footprint per business unit, automated cleanup of orphan resources.
 
 _Noncompliant Code Example_
 

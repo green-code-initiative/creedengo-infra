@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1063.)_
+_(Proposed rule for creedengo-infra — 1063.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Default Prometheus / metrics retention should be short
 
 ### **Rule key**
 
-GCI1063
+1063
 
 ### **Language and platform**
 

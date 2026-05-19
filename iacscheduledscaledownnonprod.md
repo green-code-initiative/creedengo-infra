@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1064.)_
+_(Proposed rule for creedengo-infra — 1064.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Schedule non-prod environments to scale to zero off-hours
 
 ### **Rule key**
 
-GCI1064
+1064
 
 ### **Language and platform**
 
@@ -14,7 +14,7 @@ Kubernetes (kube-green / KEDA / Knative) / Terraform schedulers / Azure Automati
 
 ### **Rule description**
 
-Most non-prod environments are used Monday-Friday, 09:00-19:00 — **~12 %** of the week. Running them 24/7 is a textbook eco-design anti-pattern. This rule (a transverse, environment-level counterpart of `GCI1055`) flags non-prod namespaces / projects / accounts that do not have a scheduled scale-down resource (`kube-green Sleep`, KEDA cron scaler, Knative scale-to-zero, AWS Instance Scheduler, Azure Automation Runbook).
+Most non-prod environments are used Monday-Friday, 09:00-19:00 — **~12 %** of the week. Running them 24/7 is a textbook eco-design anti-pattern. This rule (a transverse, environment-level counterpart of `1055`) flags non-prod namespaces / projects / accounts that do not have a scheduled scale-down resource (`kube-green Sleep`, KEDA cron scaler, Knative scale-to-zero, AWS Instance Scheduler, Azure Automation Runbook).
 
 _Noncompliant Code Example_
 

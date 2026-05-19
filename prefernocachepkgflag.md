@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1037.)_
+_(Proposed rule for creedengo-infra — 1037.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Use `--no-cache` / `--no-cache-dir` for package installs
 
 ### **Rule key**
 
-GCI1037
+1037
 
 ### **Language and platform**
 
@@ -14,7 +14,7 @@ Docker / OCI
 
 ### **Rule description**
 
-Most package managers expose a flag that disables their local cache entirely, removing the need for an explicit `rm -rf <cache>` afterwards. Using `apk add --no-cache`, `pip install --no-cache-dir`, `dnf install … && dnf clean all` keeps the layer minimal and the Dockerfile readable. This rule is a positive-form complement to `GCI1029` (cache cleaning) for the package managers where a no-cache flag is idiomatic.
+Most package managers expose a flag that disables their local cache entirely, removing the need for an explicit `rm -rf <cache>` afterwards. Using `apk add --no-cache`, `pip install --no-cache-dir`, `dnf install … && dnf clean all` keeps the layer minimal and the Dockerfile readable. This rule is a positive-form complement to `1029` (cache cleaning) for the package managers where a no-cache flag is idiomatic.
 
 _Noncompliant Code Example_
 
@@ -78,6 +78,6 @@ Remediation cost: **Easy** — add a single flag.
       if r contains "composer install" and not "--no-cache": report(r)
   ```
 
-- Known false positives: multi-line RUNs that perform a manual `rm -rf` immediately afterwards — exclude via `cleanCheck` (same logic as GCI1029).
+- Known false positives: multi-line RUNs that perform a manual `rm -rf` immediately afterwards — exclude via `cleanCheck` (same logic as 1029).
 - Feasibility verdict: ✅
 - Alternative tooling: Hadolint **DL3019/DL3013**.

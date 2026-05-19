@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1026.)_
+_(Proposed rule for creedengo-infra — 1026.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Use a lightweight Docker base image
 
 ### **Rule key**
 
-GCI1026
+1026
 
 ### **Language and platform**
 

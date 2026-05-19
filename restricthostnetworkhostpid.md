@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1047.)_
+_(Proposed rule for creedengo-infra — 1047.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Restrict `hostNetwork`, `hostPID`, `hostIPC`
 
 ### **Rule key**
 
-GCI1047
+1047
 
 ### **Language and platform**
 

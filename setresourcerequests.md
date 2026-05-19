@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1040.)_
+_(Proposed rule for creedengo-infra — 1040.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Set CPU and memory `requests` on every container
 
 ### **Rule key**
 
-GCI1040
+1040
 
 ### **Language and platform**
 

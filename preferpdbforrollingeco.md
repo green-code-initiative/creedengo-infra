@@ -1,4 +1,4 @@
-_(Proposed rule for creedengo-infra — GCI1048.)_
+_(Proposed rule for creedengo-infra — 1048.)_
 
 ### **Rule title**
 
@@ -6,7 +6,7 @@ Define a `PodDisruptionBudget` for multi-replica workloads
 
 ### **Rule key**
 
-GCI1048
+1048
 
 ### **Language and platform**
 
