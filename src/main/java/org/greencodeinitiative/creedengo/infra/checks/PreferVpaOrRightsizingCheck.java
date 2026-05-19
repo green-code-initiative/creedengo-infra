@@ -18,23 +18,22 @@
 package org.greencodeinitiative.creedengo.infra.checks;
 
 import org.sonar.check.Rule;
-import org.sonar.iac.common.api.checks.CheckContext;
 import org.sonar.iac.common.api.checks.IacCheck;
 import org.sonar.iac.common.api.checks.InitContext;
-import org.sonar.iac.helm.tree.api.CommandNode;
-import org.sonar.iac.helm.tree.api.FieldNode;
-import org.sonar.iac.helm.tree.api.Node;
-import org.sonar.iac.kubernetes.visitors.KubernetesCheckContext;
 
-@Rule(key = "GCI1024")
-public class UseOfProbesCheck implements IacCheck {
-
-  private static final String LIVENESS = "livenessProbe";
-  private static final String READINESS = "readinessProbe";
-  private static final String MESSAGE = "Configure both livenessProbe and readinessProbe to avoid wasted compute on unhealthy or not-yet-ready pods.";
+/**
+ * <strong>Stub</strong> for rule GCI1045 — prefervpaorrightsizing.
+ * <p>
+ * Generated as part of the GCI1025–GCI1064 batch (see creedengo-infra/prefervpaorrightsizing.md). The detection
+ * logic still needs to be implemented against the kubernetes sonar-iac AST.
+ * Until then the check is registered so SonarQube exposes the rule metadata
+ * and the quality profile activation works.
+ */
+@Rule(key = "GCI1045")
+public class PreferVpaOrRightsizingCheck implements IacCheck {
 
   @Override
   public void initialize(@javax.annotation.Nonnull InitContext init) {
-    //init.register(CommandNode.class, UseOfProbesCheck::checkTree);
+    // TODO: register AST visitors against sonar-iac kubernetes tree API.
   }
 }

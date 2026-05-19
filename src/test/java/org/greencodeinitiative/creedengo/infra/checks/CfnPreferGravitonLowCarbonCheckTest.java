@@ -17,24 +17,26 @@
  */
 package org.greencodeinitiative.creedengo.infra.checks;
 
-import org.sonar.check.Rule;
-import org.sonar.iac.common.api.checks.CheckContext;
-import org.sonar.iac.common.api.checks.IacCheck;
-import org.sonar.iac.common.api.checks.InitContext;
-import org.sonar.iac.helm.tree.api.CommandNode;
-import org.sonar.iac.helm.tree.api.FieldNode;
-import org.sonar.iac.helm.tree.api.Node;
-import org.sonar.iac.kubernetes.visitors.KubernetesCheckContext;
+import static org.greencodeinitiative.creedengo.infra.checks.DockerVerifier.ExpectedIssue.at;
 
-@Rule(key = "GCI1024")
-public class UseOfProbesCheck implements IacCheck {
+import org.junit.jupiter.api.Test;
 
-  private static final String LIVENESS = "livenessProbe";
-  private static final String READINESS = "readinessProbe";
-  private static final String MESSAGE = "Configure both livenessProbe and readinessProbe to avoid wasted compute on unhealthy or not-yet-ready pods.";
+class CfnPreferGravitonLowCarbonCheckTest {
 
-  @Override
-  public void initialize(@javax.annotation.Nonnull InitContext init) {
-    //init.register(CommandNode.class, UseOfProbesCheck::checkTree);
+  @Test
+  void compliant() {
+    K8sYamlVerifier.verifyNoIssue("CfnPreferGravitonLowCarbonCheck/compliant.yaml",
+        new CfnPreferGravitonLowCarbonCheck());
+  }
+
+  @Test
+  void noncompliant() {
+    // EC2 InstanceType m6i.large (line 6), RDS DBInstanceClass db.r5.large (line 11 — first key under Properties).
+    K8sYamlVerifier.verifyIssues("CfnPreferGravitonLowCarbonCheck/noncompliant.yaml",
+        new CfnPreferGravitonLowCarbonCheck(),
+        at(6,  "Prefer the ARM/Graviton equivalent of m6i for better watt-per-request."),
+        at(11, "Prefer the ARM/Graviton equivalent of r5 for better watt-per-request."));
   }
 }
+
+

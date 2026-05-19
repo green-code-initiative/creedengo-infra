@@ -17,24 +17,28 @@
  */
 package org.greencodeinitiative.creedengo.infra.checks;
 
-import org.sonar.check.Rule;
-import org.sonar.iac.common.api.checks.CheckContext;
-import org.sonar.iac.common.api.checks.IacCheck;
-import org.sonar.iac.common.api.checks.InitContext;
-import org.sonar.iac.helm.tree.api.CommandNode;
-import org.sonar.iac.helm.tree.api.FieldNode;
-import org.sonar.iac.helm.tree.api.Node;
-import org.sonar.iac.kubernetes.visitors.KubernetesCheckContext;
+import static org.greencodeinitiative.creedengo.infra.checks.DockerVerifier.ExpectedIssue.at;
 
-@Rule(key = "GCI1024")
-public class UseOfProbesCheck implements IacCheck {
+import org.junit.jupiter.api.Test;
 
-  private static final String LIVENESS = "livenessProbe";
-  private static final String READINESS = "readinessProbe";
-  private static final String MESSAGE = "Configure both livenessProbe and readinessProbe to avoid wasted compute on unhealthy or not-yet-ready pods.";
+class TfPreferSpotOrSavingsCheckTest {
 
-  @Override
-  public void initialize(@javax.annotation.Nonnull InitContext init) {
-    //init.register(CommandNode.class, UseOfProbesCheck::checkTree);
+  private static final String MSG =
+      "Consider mixing Spot / Preemptible / Low-Priority capacity in this pool — fault-tolerant workloads run cheaper and on otherwise-idle datacenter capacity.";
+
+  @Test
+  void compliant() {
+    TerraformVerifier.verifyNoIssue("TfPreferSpotOrSavingsCheck/compliant.tf",
+        new TfPreferSpotOrSavingsCheck());
+  }
+
+  @Test
+  void noncompliant() {
+    TerraformVerifier.verifyIssues("TfPreferSpotOrSavingsCheck/noncompliant.tf",
+        new TfPreferSpotOrSavingsCheck(),
+        at(1,  MSG),
+        at(10, MSG),
+        at(15, MSG));
   }
 }
+

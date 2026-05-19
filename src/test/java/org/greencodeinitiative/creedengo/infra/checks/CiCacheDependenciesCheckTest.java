@@ -17,24 +17,25 @@
  */
 package org.greencodeinitiative.creedengo.infra.checks;
 
-import org.sonar.check.Rule;
-import org.sonar.iac.common.api.checks.CheckContext;
-import org.sonar.iac.common.api.checks.IacCheck;
-import org.sonar.iac.common.api.checks.InitContext;
-import org.sonar.iac.helm.tree.api.CommandNode;
-import org.sonar.iac.helm.tree.api.FieldNode;
-import org.sonar.iac.helm.tree.api.Node;
-import org.sonar.iac.kubernetes.visitors.KubernetesCheckContext;
+import static org.greencodeinitiative.creedengo.infra.checks.DockerVerifier.ExpectedIssue.at;
 
-@Rule(key = "GCI1024")
-public class UseOfProbesCheck implements IacCheck {
+import org.junit.jupiter.api.Test;
 
-  private static final String LIVENESS = "livenessProbe";
-  private static final String READINESS = "readinessProbe";
-  private static final String MESSAGE = "Configure both livenessProbe and readinessProbe to avoid wasted compute on unhealthy or not-yet-ready pods.";
+class CiCacheDependenciesCheckTest {
 
-  @Override
-  public void initialize(@javax.annotation.Nonnull InitContext init) {
-    //init.register(CommandNode.class, UseOfProbesCheck::checkTree);
+  @Test
+  void compliant() {
+    K8sYamlVerifier.verifyNoIssue("CiCacheDependenciesCheck/compliant.yml",
+        new CiCacheDependenciesCheck());
+  }
+
+  @Test
+  void noncompliant() {
+    K8sYamlVerifier.verifyIssues("CiCacheDependenciesCheck/noncompliant.yml",
+        new CiCacheDependenciesCheck(),
+        at(11, "Add a cache step (e.g. actions/cache or setup-* `cache: npm`) so npm stops re-downloading dependencies on every run."),
+        at(17, "Add a cache step (e.g. actions/cache or setup-* `cache: maven`) so maven stops re-downloading dependencies on every run."));
   }
 }
+
+

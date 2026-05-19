@@ -17,7 +17,8 @@
  */
 package org.greencodeinitiative.creedengo.infra.checks;
 
-import java.util.Set;
+import java.util.Locale;
+import java.util.regex.Pattern;
 import javax.annotation.Nonnull;
 import org.sonar.check.Rule;
 import org.sonar.iac.common.api.checks.CheckContext;
@@ -28,26 +29,24 @@ import org.sonar.iac.common.yaml.tree.MappingTree;
 import org.sonar.iac.common.yaml.tree.TupleTree;
 
 /**
- * GCI1057 — CloudFormation counterpart of GCI1050. Flags
- * {@code Resources.*.Properties.InstanceType} that pin compute resources
- * to an x86 family when an ARM/Graviton equivalent exists. See
- * {@code cfnprefergravitonlowcarbon.md}.
+ * 1065 — flag third-party CI {@code uses:} steps whose ref is a moving
+ * tag/branch instead of a 40-char Git commit SHA. See
+ * {@code cipinactions.md}.
  *
- * <p>Resource types covered (v1): {@code AWS::EC2::Instance},
- * {@code AWS::EC2::LaunchTemplate}, {@code AWS::AutoScaling::LaunchConfiguration},
- * {@code AWS::RDS::DBInstance}.</p>
+ * <p>Detection is heuristic on the {@code uses:} scalar:</p>
+ * <ul>
+ *   <li>{@code owner/repo@<sha40>} — compliant.</li>
+ *   <li>{@code actions/...@anything} — exempt (first-party).</li>
+ *   <li>{@code ./...}, {@code docker://...} — exempt (local / container).</li>
+ *   <li>Step contains {@code eco-design:pin=tag} as an {@code if:} guard
+ *       or inside the {@code uses:} value — opt-out.</li>
+ * </ul>
+ *
+ * <p>Reports once per non-compliant step, on the {@code uses:} tuple, so
+ * the issue is anchored on the exact line of the workflow.</p>
  */
-@Rule(key = "GCI1057")
-public class CfnPreferGravitonLowCarbonCheck implements IacCheck {
+@Rule(key = "1065")
+public class CiPinActionsCheck implements IacCheck {
 
-    private static final Set<String> TARGET_TYPES = Set.of(
-            "AWS::EC2::Instance",
-            "AWS::EC2::LaunchTemplate",
-            "AWS::AutoScaling::LaunchConfiguration",
-            "AWS::RDS::DBInstance");
-
-    @Override
-    public void initialize(@Nonnull InitContext init) {
-        //init.register(FileTree.class, CfnPreferGravitonLowCarbonCheck::check);
-    }
 }
+

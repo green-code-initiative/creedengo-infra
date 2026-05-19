@@ -17,24 +17,31 @@
  */
 package org.greencodeinitiative.creedengo.infra.checks;
 
+import javax.annotation.Nonnull;
 import org.sonar.check.Rule;
-import org.sonar.iac.common.api.checks.CheckContext;
 import org.sonar.iac.common.api.checks.IacCheck;
 import org.sonar.iac.common.api.checks.InitContext;
-import org.sonar.iac.helm.tree.api.CommandNode;
-import org.sonar.iac.helm.tree.api.FieldNode;
-import org.sonar.iac.helm.tree.api.Node;
-import org.sonar.iac.kubernetes.visitors.KubernetesCheckContext;
+import org.sonar.iac.docker.symbols.ArgumentResolution;
+import org.sonar.iac.docker.tree.api.FromInstruction;
 
-@Rule(key = "GCI1024")
-public class UseOfProbesCheck implements IacCheck {
+/**
+ * GCI1031 — Do not use the {@code latest} tag (or implicit tag) on base images.
+ *
+ * <p>Reference template for Wave-2B Docker rules (see
+ * {@code creedengo-infra/avoidlatesttag.md} and the per-rule spec under
+ * {@code creedengo-rules-specifications/src/main/rules/GCI1031/}).</p>
+ *
+ * <p>Detection rules:</p>
+ * <ul>
+ *   <li>{@code FROM image} with no tag → implicit {@code :latest} → flag.</li>
+ *   <li>{@code FROM image:latest} → flag.</li>
+ *   <li>{@code FROM image@sha256:...} digest pin → OK, regardless of any tag.</li>
+ *   <li>{@code FROM scratch} → OK (no tag concept).</li>
+ *   <li>Unresolved argument (e.g. {@code FROM $BASE}) → skipped to avoid false
+ *       positives until a {@code ProjectContext} resolves build args.</li>
+ * </ul>
+ */
+@Rule(key = "GCI1031")
+public class AvoidLatestTagCheck implements IacCheck {
 
-  private static final String LIVENESS = "livenessProbe";
-  private static final String READINESS = "readinessProbe";
-  private static final String MESSAGE = "Configure both livenessProbe and readinessProbe to avoid wasted compute on unhealthy or not-yet-ready pods.";
-
-  @Override
-  public void initialize(@javax.annotation.Nonnull InitContext init) {
-    //init.register(CommandNode.class, UseOfProbesCheck::checkTree);
-  }
 }

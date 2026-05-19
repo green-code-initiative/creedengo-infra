@@ -17,24 +17,29 @@
  */
 package org.greencodeinitiative.creedengo.infra.checks;
 
-import org.sonar.check.Rule;
-import org.sonar.iac.common.api.checks.CheckContext;
-import org.sonar.iac.common.api.checks.IacCheck;
-import org.sonar.iac.common.api.checks.InitContext;
-import org.sonar.iac.helm.tree.api.CommandNode;
-import org.sonar.iac.helm.tree.api.FieldNode;
-import org.sonar.iac.helm.tree.api.Node;
-import org.sonar.iac.kubernetes.visitors.KubernetesCheckContext;
+import static org.greencodeinitiative.creedengo.infra.checks.DockerVerifier.ExpectedIssue.at;
 
-@Rule(key = "GCI1024")
-public class UseOfProbesCheck implements IacCheck {
+import org.junit.jupiter.api.Test;
 
-  private static final String LIVENESS = "livenessProbe";
-  private static final String READINESS = "readinessProbe";
-  private static final String MESSAGE = "Configure both livenessProbe and readinessProbe to avoid wasted compute on unhealthy or not-yet-ready pods.";
+class ImagePullPolicyNotAlwaysCheckTest {
 
-  @Override
-  public void initialize(@javax.annotation.Nonnull InitContext init) {
-    //init.register(CommandNode.class, UseOfProbesCheck::checkTree);
+  private static final String MESSAGE =
+      "Use imagePullPolicy: IfNotPresent on pinned/tagged images to remove redundant registry round-trips.";
+
+  @Test
+  void compliant() {
+    // - :latest with Always: not flagged here (covered by GCI1031)
+    // - sha256 digest + IfNotPresent: OK
+    // - explicit tag with no pull policy: OK
+    K8sYamlVerifier.verifyNoIssue("ImagePullPolicyNotAlwaysCheck/compliant.yaml",
+        new ImagePullPolicyNotAlwaysCheck());
+  }
+
+  @Test
+  void noncompliant() {
+    K8sYamlVerifier.verifyIssues("ImagePullPolicyNotAlwaysCheck/noncompliant.yaml",
+        new ImagePullPolicyNotAlwaysCheck(),
+        at(7, MESSAGE), at(10, MESSAGE), at(13, MESSAGE));
   }
 }
+

@@ -18,23 +18,25 @@
 package org.greencodeinitiative.creedengo.infra.checks;
 
 import org.sonar.check.Rule;
-import org.sonar.iac.common.api.checks.CheckContext;
 import org.sonar.iac.common.api.checks.IacCheck;
 import org.sonar.iac.common.api.checks.InitContext;
-import org.sonar.iac.helm.tree.api.CommandNode;
-import org.sonar.iac.helm.tree.api.FieldNode;
-import org.sonar.iac.helm.tree.api.Node;
-import org.sonar.iac.kubernetes.visitors.KubernetesCheckContext;
 
-@Rule(key = "GCI1024")
-public class UseOfProbesCheck implements IacCheck {
-
-  private static final String LIVENESS = "livenessProbe";
-  private static final String READINESS = "readinessProbe";
-  private static final String MESSAGE = "Configure both livenessProbe and readinessProbe to avoid wasted compute on unhealthy or not-yet-ready pods.";
+/**
+ * Metadata-only carrier for rule GCI1049 ({@code HelmValuesDefaultsEco}).
+ *
+ * <p>Detection lives in
+ * {@link org.greencodeinitiative.creedengo.infra.HelmValuesEcoSensor}. The
+ * sensor audits Helm chart {@code values.yaml} defaults (replicaCount,
+ * resources, imagePullPolicy, autoscaling.enabled) for eco-design
+ * anti-patterns, with opt-out via {@code Chart.yaml} annotation
+ * {@code creedengo.io/eco-design: quorum}. This {@link IacCheck} stays
+ * registered for metadata loading only.</p>
+ */
+@Rule(key = "GCI1049")
+public class HelmValuesDefaultsEcoCheck implements IacCheck {
 
   @Override
   public void initialize(@javax.annotation.Nonnull InitContext init) {
-    //init.register(CommandNode.class, UseOfProbesCheck::checkTree);
+    // No AST visitor — detection is performed by HelmValuesEcoSensor.
   }
 }

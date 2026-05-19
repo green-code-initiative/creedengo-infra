@@ -17,8 +17,6 @@
  */
 package org.greencodeinitiative.creedengo.infra.checks;
 
-import java.util.Set;
-import javax.annotation.Nonnull;
 import org.sonar.check.Rule;
 import org.sonar.iac.common.api.checks.CheckContext;
 import org.sonar.iac.common.api.checks.IacCheck;
@@ -28,26 +26,19 @@ import org.sonar.iac.common.yaml.tree.MappingTree;
 import org.sonar.iac.common.yaml.tree.TupleTree;
 
 /**
- * GCI1057 — CloudFormation counterpart of GCI1050. Flags
- * {@code Resources.*.Properties.InstanceType} that pin compute resources
- * to an x86 family when an ARM/Graviton equivalent exists. See
- * {@code cfnprefergravitonlowcarbon.md}.
- *
- * <p>Resource types covered (v1): {@code AWS::EC2::Instance},
- * {@code AWS::EC2::LaunchTemplate}, {@code AWS::AutoScaling::LaunchConfiguration},
- * {@code AWS::RDS::DBInstance}.</p>
+ * GCI1047 — flag {@code hostNetwork}, {@code hostPID} or {@code hostIPC}
+ * set to {@code true} on application workloads. Sharing host namespaces
+ * pins pods to specific nodes, breaks scheduler bin-packing and forces
+ * Karpenter/Cluster-Autoscaler to keep extra capacity — see
+ * {@code restricthostnetworkhostpid.md}.
  */
-@Rule(key = "GCI1057")
-public class CfnPreferGravitonLowCarbonCheck implements IacCheck {
+@Rule(key = "GCI1047")
+public class RestrictHostNetworkHostPidCheck implements IacCheck {
 
-    private static final Set<String> TARGET_TYPES = Set.of(
-            "AWS::EC2::Instance",
-            "AWS::EC2::LaunchTemplate",
-            "AWS::AutoScaling::LaunchConfiguration",
-            "AWS::RDS::DBInstance");
+  private static final String[] FIELDS = {"hostNetwork", "hostPID", "hostIPC"};
 
-    @Override
-    public void initialize(@Nonnull InitContext init) {
-        //init.register(FileTree.class, CfnPreferGravitonLowCarbonCheck::check);
-    }
+  @Override
+  public void initialize(@javax.annotation.Nonnull InitContext init) {
+    //init.register(FileTree.class, RestrictHostNetworkHostPidCheck::check);
+  }
 }

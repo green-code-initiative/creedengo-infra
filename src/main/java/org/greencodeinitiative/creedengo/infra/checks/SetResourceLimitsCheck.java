@@ -17,37 +17,32 @@
  */
 package org.greencodeinitiative.creedengo.infra.checks;
 
-import java.util.Set;
-import javax.annotation.Nonnull;
+import java.util.Optional;
 import org.sonar.check.Rule;
 import org.sonar.iac.common.api.checks.CheckContext;
 import org.sonar.iac.common.api.checks.IacCheck;
 import org.sonar.iac.common.api.checks.InitContext;
 import org.sonar.iac.common.yaml.tree.FileTree;
 import org.sonar.iac.common.yaml.tree.MappingTree;
-import org.sonar.iac.common.yaml.tree.TupleTree;
 
 /**
- * GCI1057 — CloudFormation counterpart of GCI1050. Flags
- * {@code Resources.*.Properties.InstanceType} that pin compute resources
- * to an x86 family when an ARM/Graviton equivalent exists. See
- * {@code cfnprefergravitonlowcarbon.md}.
+ * GCI1041 — Every container in a Kubernetes workload must declare
+ * {@code resources.limits.cpu} and {@code resources.limits.memory}.
  *
- * <p>Resource types covered (v1): {@code AWS::EC2::Instance},
- * {@code AWS::EC2::LaunchTemplate}, {@code AWS::AutoScaling::LaunchConfiguration},
- * {@code AWS::RDS::DBInstance}.</p>
+ * <p>Without limits a container can drift into noisy-neighbour territory
+ * (OOM-kill cascades, CPU starvation) and break the autoscaler's headroom
+ * accounting — see {@code setresourcelimits.md}.</p>
  */
-@Rule(key = "GCI1057")
-public class CfnPreferGravitonLowCarbonCheck implements IacCheck {
+@Rule(key = "GCI1041")
+public class SetResourceLimitsCheck implements IacCheck {
 
-    private static final Set<String> TARGET_TYPES = Set.of(
-            "AWS::EC2::Instance",
-            "AWS::EC2::LaunchTemplate",
-            "AWS::AutoScaling::LaunchConfiguration",
-            "AWS::RDS::DBInstance");
+  private static final String MSG_CPU =
+      "Set resources.limits.cpu on this container to keep noisy-neighbour bursts bounded.";
+  private static final String MSG_MEM =
+      "Set resources.limits.memory on this container to prevent OOM cascades on the node.";
 
-    @Override
-    public void initialize(@Nonnull InitContext init) {
-        //init.register(FileTree.class, CfnPreferGravitonLowCarbonCheck::check);
-    }
+  @Override
+  public void initialize(@javax.annotation.Nonnull InitContext init) {
+    //init.register(FileTree.class, SetResourceLimitsCheck::check);
+  }
 }

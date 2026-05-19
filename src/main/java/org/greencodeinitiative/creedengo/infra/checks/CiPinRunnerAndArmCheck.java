@@ -17,7 +17,7 @@
  */
 package org.greencodeinitiative.creedengo.infra.checks;
 
-import java.util.Set;
+import java.util.Locale;
 import javax.annotation.Nonnull;
 import org.sonar.check.Rule;
 import org.sonar.iac.common.api.checks.CheckContext;
@@ -28,26 +28,23 @@ import org.sonar.iac.common.yaml.tree.MappingTree;
 import org.sonar.iac.common.yaml.tree.TupleTree;
 
 /**
- * GCI1057 — CloudFormation counterpart of GCI1050. Flags
- * {@code Resources.*.Properties.InstanceType} that pin compute resources
- * to an x86 family when an ARM/Graviton equivalent exists. See
- * {@code cfnprefergravitonlowcarbon.md}.
+ * GCI1060 — flag GitHub-Actions {@code runs-on:} values pinned to a moving
+ * tag ({@code *-latest}) or using a generic x86 runner when an ARM
+ * equivalent exists. See {@code cipinrunnerandarm.md}.
  *
- * <p>Resource types covered (v1): {@code AWS::EC2::Instance},
- * {@code AWS::EC2::LaunchTemplate}, {@code AWS::AutoScaling::LaunchConfiguration},
- * {@code AWS::RDS::DBInstance}.</p>
+ * <p>Two issues per job at most:</p>
+ * <ul>
+ *   <li>{@code runs-on: *-latest} → pin to a specific runner version.</li>
+ *   <li>{@code runs-on: ubuntu-22.04} (or any non-ARM Linux runner) →
+ *       consider the matching ARM runner (e.g. {@code ubuntu-22.04-arm})
+ *       when the build supports it.</li>
+ * </ul>
+ *
+ * <p>Jobs with {@code # eco-design:arch=x86} as a {@code if:} expression or
+ * inside the {@code runs-on:} string itself opt-out of the ARM hint.</p>
  */
-@Rule(key = "GCI1057")
-public class CfnPreferGravitonLowCarbonCheck implements IacCheck {
+@Rule(key = "GCI1060")
+public class CiPinRunnerAndArmCheck implements IacCheck {
 
-    private static final Set<String> TARGET_TYPES = Set.of(
-            "AWS::EC2::Instance",
-            "AWS::EC2::LaunchTemplate",
-            "AWS::AutoScaling::LaunchConfiguration",
-            "AWS::RDS::DBInstance");
-
-    @Override
-    public void initialize(@Nonnull InitContext init) {
-        //init.register(FileTree.class, CfnPreferGravitonLowCarbonCheck::check);
-    }
 }
+

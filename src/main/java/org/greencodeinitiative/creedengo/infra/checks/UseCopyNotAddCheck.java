@@ -17,24 +17,29 @@
  */
 package org.greencodeinitiative.creedengo.infra.checks;
 
+import javax.annotation.Nonnull;
 import org.sonar.check.Rule;
-import org.sonar.iac.common.api.checks.CheckContext;
 import org.sonar.iac.common.api.checks.IacCheck;
 import org.sonar.iac.common.api.checks.InitContext;
-import org.sonar.iac.helm.tree.api.CommandNode;
-import org.sonar.iac.helm.tree.api.FieldNode;
-import org.sonar.iac.helm.tree.api.Node;
-import org.sonar.iac.kubernetes.visitors.KubernetesCheckContext;
+import org.sonar.iac.docker.tree.api.AddInstruction;
 
-@Rule(key = "GCI1024")
-public class UseOfProbesCheck implements IacCheck {
+/**
+ * GCI1033 — Prefer {@code COPY} over {@code ADD} for local files.
+ *
+ * <p>{@code ADD} has two surprising side effects: it auto-extracts local
+ * archives and (historically) downloads remote URLs. Both make caching less
+ * deterministic and frequently bake unwanted bytes into the image. Use
+ * {@code COPY} for plain copies and an explicit {@code RUN curl … && verify}
+ * for remote artefacts.</p>
+ */
+@Rule(key = "GCI1033")
+public class UseCopyNotAddCheck implements IacCheck {
 
-  private static final String LIVENESS = "livenessProbe";
-  private static final String READINESS = "readinessProbe";
-  private static final String MESSAGE = "Configure both livenessProbe and readinessProbe to avoid wasted compute on unhealthy or not-yet-ready pods.";
+  private static final String MESSAGE =
+      "Prefer COPY over ADD for local files (and use `RUN curl … && verify` for remote artefacts).";
 
   @Override
-  public void initialize(@javax.annotation.Nonnull InitContext init) {
-    //init.register(CommandNode.class, UseOfProbesCheck::checkTree);
+  public void initialize(@Nonnull InitContext init) {
+    init.register(AddInstruction.class, (ctx, add) -> ctx.reportIssue(add, MESSAGE));
   }
 }

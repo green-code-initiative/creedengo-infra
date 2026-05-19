@@ -18,23 +18,25 @@
 package org.greencodeinitiative.creedengo.infra.checks;
 
 import org.sonar.check.Rule;
-import org.sonar.iac.common.api.checks.CheckContext;
 import org.sonar.iac.common.api.checks.IacCheck;
 import org.sonar.iac.common.api.checks.InitContext;
-import org.sonar.iac.helm.tree.api.CommandNode;
-import org.sonar.iac.helm.tree.api.FieldNode;
-import org.sonar.iac.helm.tree.api.Node;
-import org.sonar.iac.kubernetes.visitors.KubernetesCheckContext;
 
-@Rule(key = "GCI1024")
-public class UseOfProbesCheck implements IacCheck {
-
-  private static final String LIVENESS = "livenessProbe";
-  private static final String READINESS = "readinessProbe";
-  private static final String MESSAGE = "Configure both livenessProbe and readinessProbe to avoid wasted compute on unhealthy or not-yet-ready pods.";
+/**
+ * Metadata-only carrier for rule GCI1028 ({@code DeleteUnnecessaryFiles}).
+ *
+ * <p>The actual detection lives in
+ * {@link org.greencodeinitiative.creedengo.infra.DockerignoreSensor} because
+ * the rule audits a sibling {@code .dockerignore} file that is <em>not</em>
+ * part of the sonar-iac Docker AST. This {@link IacCheck} stays registered in
+ * {@link org.greencodeinitiative.creedengo.infra.InfraDockerCheckRegistrar} so
+ * that {@code RuleMetadataLoader} loads the JSON/HTML rule definition; it
+ * intentionally registers no AST visitor.</p>
+ */
+@Rule(key = "GCI1028")
+public class DeleteUnnecessaryFilesCheck implements IacCheck {
 
   @Override
   public void initialize(@javax.annotation.Nonnull InitContext init) {
-    //init.register(CommandNode.class, UseOfProbesCheck::checkTree);
+    // No AST visitor — detection is performed by DockerignoreSensor.
   }
 }
