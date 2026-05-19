@@ -26,67 +26,67 @@ Authoritative metadata source: [`creedengo-rules-specifications`](../creedengo-r
 
 | Key | Slug | Severity | Remediation | Feasibility |
 | --- | --- | --- | --- | --- |
-| 1025 | [multistage](./multistage.md) **(impl)** | Major | Medium | ✅ |
-| 1026 | [lightweightimages](./lightweightimages.md) **(impl)** | Major | Easy | ✅ |
-| 1027 | [instructionsinspecificorder](./instructionsinspecificorder.md) **(impl)** | Minor | Easy | ⚠️ |
-| 1028 | [deleteunnecessaryfiles](./deleteunnecessaryfiles.md) **(impl)** | Major | Easy | ⚠️ |
-| 1029 | [cachecleanedexistingrulessonarqube](./cachecleanedexistingrulessonarqube.md) **(impl)** | Major | Easy | ✅ |
+| 1025 | [multistage](savespottedrules/multistage.md) **(impl)** | Major | Medium | ✅ |
+| 1026 | [lightweightimages](savespottedrules/lightweightimages.md) **(impl)** | Major | Easy | ✅ |
+| 1027 | [instructionsinspecificorder](savespottedrules/instructionsinspecificorder.md) **(impl)** | Minor | Easy | ⚠️ |
+| 1028 | [deleteunnecessaryfiles](savespottedrules/deleteunnecessaryfiles.md) **(impl)** | Major | Easy | ⚠️ |
+| 1029 | [cachecleanedexistingrulessonarqube](savespottedrules/cachecleanedexistingrulessonarqube.md) **(impl)** | Major | Easy | ✅ |
 
 ### Docker / OCI — new (1030–1039)
 
 | Key | Slug | Severity | Remediation | Feasibility |
 | --- | --- | --- | --- | --- |
-| 1030 | [pinbaseimagedigest](./pinbaseimagedigest.md) **(impl)** | Minor | Easy | ✅ |
-| 1031 | [avoidlatesttag](./avoidlatesttag.md) **(impl)** | Major | Easy | ✅ |
-| 1032 | [mergeconsecutiverun](./mergeconsecutiverun.md) **(impl)** | Minor | Medium | ✅ |
-| 1033 | [usecopynotadd](./usecopynotadd.md) **(impl)** | Minor | Easy | ✅ |
-| 1034 | [exposeonlyneededports](./exposeonlyneededports.md) **(impl)** | Minor | Easy | ✅ |
-| 1035 | [setnonrootuser](./setnonrootuser.md) **(impl)** | Major | Easy | ✅ |
-| 1036 | [nobuildtoolsinruntime](./nobuildtoolsinruntime.md) **(impl)** | Major | Medium | ✅ |
-| 1037 | [prefernocachepkgflag](./prefernocachepkgflag.md) **(impl)** | Minor | Easy | ✅ |
-| 1038 | [singleprocesspercontainer](./singleprocesspercontainer.md) **(impl)** | Info | Hard | ⚠️ |
-| 1039 | [preferstaticbinaryscratch](./preferstaticbinaryscratch.md) | Info | Hard | ⚠️ |
+| 1030 | [pinbaseimagedigest](savespottedrules/pinbaseimagedigest.md) **(impl)** | Minor | Easy | ✅ |
+| 1031 | [avoidlatesttag](savespottedrules/avoidlatesttag.md) **(impl)** | Major | Easy | ✅ |
+| 1032 | [mergeconsecutiverun](savespottedrules/mergeconsecutiverun.md) **(impl)** | Minor | Medium | ✅ |
+| 1033 | [usecopynotadd](savespottedrules/usecopynotadd.md) **(impl)** | Minor | Easy | ✅ |
+| 1034 | [exposeonlyneededports](savespottedrules/exposeonlyneededports.md) **(impl)** | Minor | Easy | ✅ |
+| 1035 | [setnonrootuser](savespottedrules/setnonrootuser.md) **(impl)** | Major | Easy | ✅ |
+| 1036 | [nobuildtoolsinruntime](savespottedrules/nobuildtoolsinruntime.md) **(impl)** | Major | Medium | ✅ |
+| 1037 | [prefernocachepkgflag](savespottedrules/prefernocachepkgflag.md) **(impl)** | Minor | Easy | ✅ |
+| 1038 | [singleprocesspercontainer](savespottedrules/singleprocesspercontainer.md) **(impl)** | Info | Hard | ⚠️ |
+| 1039 | [preferstaticbinaryscratch](savespottedrules/preferstaticbinaryscratch.md) | Info | Hard | ⚠️ |
 
 ### Kubernetes / Helm — new (1040–1049)
 
 | Key | Slug | Severity | Remediation | Feasibility |
 | --- | --- | --- | --- | --- |
-| 1040 | [setresourcerequests](./setresourcerequests.md) **(impl)** | Major | Easy | ✅ |
-| 1041 | [setresourcelimits](./setresourcelimits.md) **(impl)** | Major | Easy | ✅ |
-| 1042 | [cpurequestvslimitratio](./cpurequestvslimitratio.md) **(impl)** | Minor | Medium | ✅ |
-| 1043 | [replicasgreaterthanneeded](./replicasgreaterthanneeded.md) **(impl)** | Minor | Hard | ⚠️ |
-| 1044 | [requirehpafordeployment](./requirehpafordeployment.md) **(impl)** | Minor | Medium | ✅ |
-| 1045 | [prefervpaorrightsizing](./prefervpaorrightsizing.md) | Info | Hard | ❌ |
-| 1046 | [imagepullpolicynotalways](./imagepullpolicynotalways.md) **(impl)** | Minor | Easy | ✅ |
-| 1047 | [restricthostnetworkhostpid](./restricthostnetworkhostpid.md) **(impl)** | Info | Easy | ✅ |
-| 1048 | [preferpdbforrollingeco](./preferpdbforrollingeco.md) **(impl)** | Info | Medium | ✅ |
-| 1049 | [helmvaluesdefaultseco](./helmvaluesdefaultseco.md) **(impl)** | Info | Medium | ⚠️ |
+| 1040 | [setresourcerequests](savespottedrules/setresourcerequests.md) **(impl)** | Major | Easy | ✅ |
+| 1041 | [setresourcelimits](savespottedrules/setresourcelimits.md) **(impl)** | Major | Easy | ✅ |
+| 1042 | [cpurequestvslimitratio](savespottedrules/cpurequestvslimitratio.md) **(impl)** | Minor | Medium | ✅ |
+| 1043 | [replicasgreaterthanneeded](savespottedrules/replicasgreaterthanneeded.md) **(impl)** | Minor | Hard | ⚠️ |
+| 1044 | [requirehpafordeployment](savespottedrules/requirehpafordeployment.md) **(impl)** | Minor | Medium | ✅ |
+| 1045 | [prefervpaorrightsizing](savespottedrules/prefervpaorrightsizing.md) | Info | Hard | ❌ |
+| 1046 | [imagepullpolicynotalways](savespottedrules/imagepullpolicynotalways.md) **(impl)** | Minor | Easy | ✅ |
+| 1047 | [restricthostnetworkhostpid](savespottedrules/restricthostnetworkhostpid.md) **(impl)** | Info | Easy | ✅ |
+| 1048 | [preferpdbforrollingeco](savespottedrules/preferpdbforrollingeco.md) **(impl)** | Info | Medium | ✅ |
+| 1049 | [helmvaluesdefaultseco](savespottedrules/helmvaluesdefaultseco.md) **(impl)** | Info | Medium | ⚠️ |
 
 ### Terraform / CloudFormation — new (1050–1057)
 
 | Key | Slug | Severity | Remediation | Feasibility |
 | --- | --- | --- | --- | --- |
-| 1050 | [tfprefergravitonarm](./tfprefergravitonarm.md) **(impl)** | Minor | Medium | ✅ |
-| 1051 | [tfrightsizeinstancetypes](./tfrightsizeinstancetypes.md) **(impl)** | Info | Hard | ⚠️ |
-| 1052 | [tfenableautoscalinggroup](./tfenableautoscalinggroup.md) **(impl)** | Major | Medium | ✅ |
-| 1053 | [tfstoragelifecyclerules](./tfstoragelifecyclerules.md) **(impl)** | Minor | Easy | ✅ |
-| 1054 | [tfchooselowcarbonregion](./tfchooselowcarbonregion.md) **(impl)** | Info | Easy | ✅ |
-| 1055 | [tfavoidalwaysonresources](./tfavoidalwaysonresources.md) **(impl)** | Major | Medium | ⚠️ |
-| 1056 | [tfpreferspotorsavings](./tfpreferspotorsavings.md) **(impl)** | Info | Hard | ⚠️ |
-| 1057 | [cfnprefergravitonlowcarbon](./cfnprefergravitonlowcarbon.md) **(impl)** | Minor | Medium | ✅ |
+| 1050 | [tfprefergravitonarm](savespottedrules/tfprefergravitonarm.md) **(impl)** | Minor | Medium | ✅ |
+| 1051 | [tfrightsizeinstancetypes](savespottedrules/tfrightsizeinstancetypes.md) **(impl)** | Info | Hard | ⚠️ |
+| 1052 | [tfenableautoscalinggroup](savespottedrules/tfenableautoscalinggroup.md) **(impl)** | Major | Medium | ✅ |
+| 1053 | [tfstoragelifecyclerules](savespottedrules/tfstoragelifecyclerules.md) **(impl)** | Minor | Easy | ✅ |
+| 1054 | [tfchooselowcarbonregion](savespottedrules/tfchooselowcarbonregion.md) **(impl)** | Info | Easy | ✅ |
+| 1055 | [tfavoidalwaysonresources](savespottedrules/tfavoidalwaysonresources.md) **(impl)** | Major | Medium | ⚠️ |
+| 1056 | [tfpreferspotorsavings](savespottedrules/tfpreferspotorsavings.md) **(impl)** | Info | Hard | ⚠️ |
+| 1057 | [cfnprefergravitonlowcarbon](savespottedrules/cfnprefergravitonlowcarbon.md) **(impl)** | Minor | Medium | ✅ |
 
 ### IaC transverse — new (1058–1065)
 
 | Key | Slug | Severity | Remediation | Feasibility |
 | --- | --- | --- | --- | --- |
-| 1058 | [cicachedependencies](./cicachedependencies.md) **(impl)** | Minor | Easy | ⚠️ |
-| 1059 | [ciskipredundantjobs](./ciskipredundantjobs.md) **(impl)** | Info | Medium | ⚠️ |
-| 1060 | [cipinrunnerandarm](./cipinrunnerandarm.md) **(impl)** | Info | Easy | ⚠️ |
-| 1061 | [iacnosecretinplaintexteco](./iacnosecretinplaintexteco.md) **(impl)** | Major | Easy | ✅ |
-| 1062 | [iactagenvironmenteco](./iactagenvironmenteco.md) **(impl)** | Info | Easy | ✅ |
-| 1063 | [iacprometheuslowretentiondefault](./iacprometheuslowretentiondefault.md) **(impl)** | Info | Medium | ⚠️ |
-| 1064 | [iacscheduledscaledownnonprod](./iacscheduledscaledownnonprod.md) **(impl)** | Major | Medium | ⚠️ |
-| 1065 | [cipinactions](./cipinactions.md) **(impl)** | Minor | Easy | ⚠️ |
+| 1058 | [cicachedependencies](savespottedrules/cicachedependencies.md) **(impl)** | Minor | Easy | ⚠️ |
+| 1059 | [ciskipredundantjobs](savespottedrules/ciskipredundantjobs.md) **(impl)** | Info | Medium | ⚠️ |
+| 1060 | [cipinrunnerandarm](savespottedrules/cipinrunnerandarm.md) **(impl)** | Info | Easy | ⚠️ |
+| 1061 | [iacnosecretinplaintexteco](savespottedrules/iacnosecretinplaintexteco.md) **(impl)** | Major | Easy | ✅ |
+| 1062 | [iactagenvironmenteco](savespottedrules/iactagenvironmenteco.md) **(impl)** | Info | Easy | ✅ |
+| 1063 | [iacprometheuslowretentiondefault](savespottedrules/iacprometheuslowretentiondefault.md) **(impl)** | Info | Medium | ⚠️ |
+| 1064 | [iacscheduledscaledownnonprod](savespottedrules/iacscheduledscaledownnonprod.md) **(impl)** | Major | Medium | ⚠️ |
+| 1065 | [cipinactions](savespottedrules/cipinactions.md) **(impl)** | Minor | Easy | ⚠️ |
 
 ## Notes
 

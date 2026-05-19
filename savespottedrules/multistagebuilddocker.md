@@ -1,4 +1,4 @@
-> **Archived — superseded by [`multistage.md`](./multistage.md) (rule key `1025`).**
+> **Archived — superseded by [`multistage.md`](multistage.md) (rule key `1025`).**
 >
 > _Date_: 2026-05.
 > _Reason_: this draft duplicated the multi-stage Docker rule already covered in `multistage.md`,

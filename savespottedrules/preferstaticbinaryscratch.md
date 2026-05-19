@@ -21,7 +21,7 @@ _Noncompliant Code Example_
 ```Dockerfile
 FROM golang:1.22 AS builder
 WORKDIR /src
-COPY . .
+COPY .. .
 RUN go build -o /out/app ./cmd/app
 
 FROM alpine:3.19
