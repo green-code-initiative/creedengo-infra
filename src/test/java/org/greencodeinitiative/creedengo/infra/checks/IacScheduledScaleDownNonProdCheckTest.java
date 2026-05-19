@@ -18,8 +18,6 @@
 package org.greencodeinitiative.creedengo.infra.checks;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.greencodeinitiative.creedengo.infra.checks.DockerVerifier.ExpectedIssue.at;
-
 import org.junit.jupiter.api.Test;
 
 class IacScheduledScaleDownNonProdCheckTest {

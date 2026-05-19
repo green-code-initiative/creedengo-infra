@@ -17,8 +17,6 @@
  */
 package org.greencodeinitiative.creedengo.infra.checks;
 
-import static org.greencodeinitiative.creedengo.infra.checks.DockerVerifier.ExpectedIssue.at;
-
 import org.junit.jupiter.api.Test;
 
 class SetResourceLimitsCheckTest {

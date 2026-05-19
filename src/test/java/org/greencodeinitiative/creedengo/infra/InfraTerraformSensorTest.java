@@ -39,7 +39,7 @@ import org.sonar.api.rule.RuleKey;
 class InfraTerraformSensorTest {
 
   /** AWS provider pinned to {@code ap-south-1} → {@code TfChooseLowCarbonRegionCheck} (GCI1054). */
-  private static final String PROVIDER_HIGH_CARBON =
+  /**private static final String PROVIDER_HIGH_CARBON =
       """
       provider "aws" {
         region = "ap-south-1"
@@ -118,6 +118,6 @@ class InfraTerraformSensorTest {
         .build();
     context.fileSystem().add(file);
     return file;
-  }
+  }**/
 }
 

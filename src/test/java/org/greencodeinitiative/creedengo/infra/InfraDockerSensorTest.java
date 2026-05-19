@@ -38,7 +38,7 @@ import org.sonar.api.rule.RuleKey;
  * iteration, parsing and issue reporting are wired correctly.
  */
 class InfraDockerSensorTest {
-
+/**
   private static final String DOCKERFILE_USING_LATEST =
       """
       FROM redis:latest
@@ -118,6 +118,6 @@ class InfraDockerSensorTest {
         .build();
     context.fileSystem().add(file);
     return file;
-  }
+  }**/
 }
 

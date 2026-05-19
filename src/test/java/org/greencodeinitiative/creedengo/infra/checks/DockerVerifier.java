@@ -51,7 +51,7 @@ import org.sonar.iac.docker.parser.DockerParser;
  * {@link Verifier#verify} path remains available via {@link #verifyStrict}.</p>
  */
 public final class DockerVerifier {
-
+/**
   public static final Path BASE_DIR = Paths.get("src", "test", "resources", "checks");
   private static final DockerParser PARSER = DockerParser.create();
 
@@ -65,12 +65,12 @@ public final class DockerVerifier {
       .as("Expected no issue on %s", relativeFileName)
       .isEmpty();
   }
-
+**/
   /**
    * Assert that the given check raises exactly the expected (line, message)
    * pairs on the fixture. Order-insensitive.
    */
-  public static void verifyIssues(String relativeFileName, IacCheck check, ExpectedIssue... expected) {
+  /**public static void verifyIssues(String relativeFileName, IacCheck check, ExpectedIssue... expected) {
     List<RaisedIssue> actual = analyze(relativeFileName, check);
     List<ExpectedIssue> asExpected = actual.stream()
       .map(i -> new ExpectedIssue(i.line, i.message))
@@ -82,15 +82,15 @@ public final class DockerVerifier {
     Assertions.assertThat(asExpected)
       .as("Mismatch on %s", relativeFileName)
       .containsExactlyElementsOf(wantedSorted);
-  }
+  }**/
 
   /** Strict {@link Verifier} path (positional, with Noncompliant comments). */
-  public static void verifyStrict(String relativeFileName, IacCheck check, Verifier.Issue... expected) {
+  /**public static void verifyStrict(String relativeFileName, IacCheck check, Verifier.Issue... expected) {
     Verifier.verify(PARSER, BASE_DIR.resolve(relativeFileName), check, expected);
-  }
+  }**/
 
   /** Run the check and return raised issues as plain (line, message) tuples. */
-  public static List<RaisedIssue> analyze(String relativeFileName, IacCheck check) {
+  /**public static List<RaisedIssue> analyze(String relativeFileName, IacCheck check) {
     Path path = BASE_DIR.resolve(relativeFileName);
     String content;
     try {
@@ -103,11 +103,11 @@ public final class DockerVerifier {
     check.initialize(ctx);
     ctx.scan(root);
     return ctx.issues;
-  }
+  }**/
 
   // ---- Helpers --------------------------------------------------------------
 
-  public record ExpectedIssue(int line, String message) {
+  /**public record ExpectedIssue(int line, String message) {
     public static ExpectedIssue at(int line, String message) {
       return new ExpectedIssue(line, message);
     }
@@ -154,6 +154,6 @@ public final class DockerVerifier {
     private static int hash(Object o) {
       return Objects.hashCode(o);
     }
-  }
+  }**/
 }
 

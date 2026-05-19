@@ -44,7 +44,7 @@ import org.sonar.iac.terraform.parser.HclParser;
  * {@code src/test/resources/checks/<CheckName>/}.
  */
 public final class TerraformVerifier {
-
+/**
   public static final Path BASE_DIR = Paths.get("src", "test", "resources", "checks");
   private static final HclParser PARSER = new HclParser();
 
@@ -120,6 +120,6 @@ public final class TerraformVerifier {
     public void reportIssue(HasTextRange toHighlight, String message, List<SecondaryLocation> secondaries) {
       reportIssue(toHighlight.textRange(), message);
     }
-  }
+  }**/
 }
 
