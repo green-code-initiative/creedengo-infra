@@ -30,19 +30,19 @@ public final class InfraDockerCheckRegistrar {
   public static final List<Class<?>> ANNOTATED_RULE_CLASSES = List.of(
       org.greencodeinitiative.creedengo.infra.checks.MultistageCheck.class,
       org.greencodeinitiative.creedengo.infra.checks.LightweightImagesCheck.class,
-      org.greencodeinitiative.creedengo.infra.checks.InstructionsInSpecificOrderCheck.class,
-      org.greencodeinitiative.creedengo.infra.checks.DeleteUnnecessaryFilesCheck.class,
+      //org.greencodeinitiative.creedengo.infra.checks.InstructionsInSpecificOrderCheck.class,
+      /**org.greencodeinitiative.creedengo.infra.checks.DeleteUnnecessaryFilesCheck.class,
       org.greencodeinitiative.creedengo.infra.checks.CacheCleanedExistingRulesSonarqubeCheck.class,
       org.greencodeinitiative.creedengo.infra.checks.PinBaseImageDigestCheck.class,
       org.greencodeinitiative.creedengo.infra.checks.AvoidLatestTagCheck.class,
       org.greencodeinitiative.creedengo.infra.checks.MergeConsecutiveRunCheck.class,
       org.greencodeinitiative.creedengo.infra.checks.UseCopyNotAddCheck.class,
-      org.greencodeinitiative.creedengo.infra.checks.ExposeOnlyNeededPortsCheck.class,
+      org.greencodeinitiative.creedengo.infra.checks.ExposeOnlyNeededPortsCheck.class,**/
       org.greencodeinitiative.creedengo.infra.checks.SetNonRootUserCheck.class,
-      org.greencodeinitiative.creedengo.infra.checks.NoBuildToolsInRuntimeCheck.class,
-      org.greencodeinitiative.creedengo.infra.checks.PreferNoCachePkgFlagCheck.class,
+      org.greencodeinitiative.creedengo.infra.checks.NoBuildToolsInRuntimeCheck.class//,
+      /**org.greencodeinitiative.creedengo.infra.checks.PreferNoCachePkgFlagCheck.class,
       org.greencodeinitiative.creedengo.infra.checks.SingleProcessPerContainerCheck.class,
-      org.greencodeinitiative.creedengo.infra.checks.PreferStaticBinaryScratchCheck.class
+      org.greencodeinitiative.creedengo.infra.checks.PreferStaticBinaryScratchCheck.class**/
   );
 
   private InfraDockerCheckRegistrar() {

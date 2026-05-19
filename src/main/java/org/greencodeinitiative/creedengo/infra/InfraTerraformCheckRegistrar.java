@@ -28,13 +28,13 @@ import java.util.List;
 public final class InfraTerraformCheckRegistrar {
 
   public static final List<Class<?>> ANNOTATED_RULE_CLASSES = List.of(
-      org.greencodeinitiative.creedengo.infra.checks.TfPreferGravitonArmCheck.class,
+      /**org.greencodeinitiative.creedengo.infra.checks.TfPreferGravitonArmCheck.class,
       org.greencodeinitiative.creedengo.infra.checks.TfRightSizeInstanceTypesCheck.class,
       org.greencodeinitiative.creedengo.infra.checks.TfEnableAutoscalingGroupCheck.class,
       org.greencodeinitiative.creedengo.infra.checks.TfStorageLifecycleRulesCheck.class,
       org.greencodeinitiative.creedengo.infra.checks.TfChooseLowCarbonRegionCheck.class,
       org.greencodeinitiative.creedengo.infra.checks.TfAvoidAlwaysOnResourcesCheck.class,
-      org.greencodeinitiative.creedengo.infra.checks.TfPreferSpotOrSavingsCheck.class
+      org.greencodeinitiative.creedengo.infra.checks.TfPreferSpotOrSavingsCheck.class**/
   );
 
   private InfraTerraformCheckRegistrar() {

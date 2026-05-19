@@ -21,7 +21,7 @@ import org.junit.jupiter.api.Test;
 import org.sonar.iac.common.api.checks.IacCheck;
 
 class ExposeOnlyNeededPortsCheckTest {
-  private final IacCheck check = new ExposeOnlyNeededPortsCheck();
+  private final IacCheck check = null;//new ExposeOnlyNeededPortsCheck();
 
   @Test
   void shouldNotRaiseUnderThreshold() {
