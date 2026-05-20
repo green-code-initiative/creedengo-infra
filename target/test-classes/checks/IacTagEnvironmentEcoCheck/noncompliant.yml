@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+  labels:
+    app: web
+spec:
+  replicas: 2
+---
+AWSTemplateFormatVersion: "2010-09-09"
+Resources:
+  Web:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t4g.small
+

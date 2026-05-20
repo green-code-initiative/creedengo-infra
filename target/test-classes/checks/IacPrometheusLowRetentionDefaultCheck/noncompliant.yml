@@ -1,0 +1,6 @@
+prometheus:
+  prometheusSpec:
+    retention: 180d
+    scrapeInterval: 10s
+    retentionSize: 500Gi
+

@@ -1,0 +1,7 @@
+| Brique                  | Azure                          | GCP                            | AWS                          |
+|-------------------------|--------------------------------|--------------------------------|------------------------------|
+| **Compute**             | [Virtual Machines](https://docs.microsoft.com/en-us/azure/virtual-machines/) | [Compute Engine](https://cloud.google.com/compute) | [EC2](https://aws.amazon.com/ec2/) |
+| **Stockage Objet**      | [Blob Storage](https://docs.microsoft.com/en-us/azure/storage/blobs/) | [Cloud Storage](https://cloud.google.com/storage) | [S3](https://aws.amazon.com/s3/) |
+| **Base de Données**     | [Azure SQL Database](https://docs.microsoft.com/en-us/azure/azure-sql/) | [Cloud SQL](https://cloud.google.com/sql) | [RDS](https://aws.amazon.com/rds/) |
+| **Réseau**             | [Virtual Network](https://docs.microsoft.com/en-us/azure/virtual-network/) | [VPC](https://cloud.google.com/vpc) | [VPC](https://aws.amazon.com/vpc/) |
+| **Conteneurs**          | [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/) | [Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine) | [Elastic Kubernetes Service (EKS)](https://aws.amazon.com/eks/) |

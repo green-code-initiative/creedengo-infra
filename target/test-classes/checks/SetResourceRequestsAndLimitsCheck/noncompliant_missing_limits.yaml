@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+spec:
+  template:
+    spec:
+      containers:
+        - name: api
+          image: myorg/api@sha256:abc
+          resources: # Noncompliant {{Set resources.limits.memory to prevent unbounded memory consumption and OOMKill cascades.}}
+            requests:
+              cpu: "100m"
+              memory: "128Mi"

@@ -40,7 +40,7 @@ final class KubernetesCheckUtils {
 
   /** Workloads that expose container specs through {@code spec.template.spec.containers}. */
   static final Set<String> POD_TEMPLATE_KINDS = Set.of(
-      "Deployment", "StatefulSet", "DaemonSet", "ReplicaSet", "Job", "CronJob");
+      "Deployment", "StatefulSet", "DaemonSet", "ReplicaSet", "Job");
 
   /** Workloads that expose container specs directly under {@code spec.containers}. */
   static final Set<String> POD_KINDS = Set.of("Pod");
@@ -75,7 +75,16 @@ final class KubernetesCheckUtils {
     if (POD_KINDS.contains(k)) {
       return spec;
     }
+    if ("CronJob".equals(k)) {
+      // spec.jobTemplate.spec.template.spec
+      return spec
+          .flatMap(s -> mapping(s, "jobTemplate"))
+          .flatMap(jt -> mapping(jt, "spec"))
+          .flatMap(s -> mapping(s, "template"))
+          .flatMap(t -> mapping(t, "spec"));
+    }
     if (POD_TEMPLATE_KINDS.contains(k)) {
+      // spec.template.spec
       return spec.flatMap(s -> mapping(s, "template")).flatMap(t -> mapping(t, "spec"));
     }
     return Optional.empty();
@@ -156,4 +165,3 @@ final class KubernetesCheckUtils {
     return v.equals("true") || v.equals("yes") || v.equals("on");
   }
 }
-

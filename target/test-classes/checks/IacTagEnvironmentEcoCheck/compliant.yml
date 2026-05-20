@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+  labels:
+    app: web
+    environment: production
+    owner: team-payments
+spec:
+  replicas: 2
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: default
+---
+AWSTemplateFormatVersion: "2010-09-09"
+Resources:
+  Web:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t4g.small
+      Tags:
+        - Key: environment
+          Value: production
+        - Key: owner
+          Value: team-payments
+

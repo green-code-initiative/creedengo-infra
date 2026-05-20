@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+spec:
+  template:
+    spec:
+      containers:
+        - name: api
+          image: myorg/api@sha256:abc
+          resources:
+            requests: # Noncompliant {{Set resources.requests.cpu to help the scheduler and avoid resource contention.}}
+              memory: "128Mi"
+            limits:
+              memory: "256Mi"

@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.greencodeinitiative.creedengo.infra.checks.UseOfProbesCheckTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 3, Time elapsed: 0.218 s -- in org.greencodeinitiative.creedengo.infra.checks.UseOfProbesCheckTest

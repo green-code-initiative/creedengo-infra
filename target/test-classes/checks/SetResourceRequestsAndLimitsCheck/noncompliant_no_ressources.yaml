@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+spec:
+  template:
+    spec:
+      containers:
+        - name: api # Noncompliant {{Set resources.requests (cpu, memory) and resources.limits (memory) for every container.}}
+          image: myorg/api@sha256:abc
