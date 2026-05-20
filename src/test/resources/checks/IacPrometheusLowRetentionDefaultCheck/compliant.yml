@@ -1,0 +1,20 @@
+# Short retention — within threshold
+prometheus:
+  prometheusSpec:
+    retention: 15d
+    scrapeInterval: 30s
+    retentionSize: 50Gi
+---
+# Long retention but with remote write (downsampling) — accepted
+otherStack:
+  prometheusSpec:
+    retention: 365d
+    scrapeInterval: 30s
+    remoteWrite:
+      - url: https://thanos-receiver.example.com/api/v1/receive
+---
+# `retention:` outside a prometheus-like spec — not flagged
+backup:
+  retention: 365d
+  schedule: "0 3 * * *"
+

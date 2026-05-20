@@ -1,0 +1,13 @@
+name: ci
+on:
+  push:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo build
+  java:
+    runs-on: ubuntu-22.04
+    steps:
+      - run: echo java
+

@@ -1,0 +1,12 @@
+name: ci-bad
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: ./mvnw -B verify
+      - uses: tj-actions/changed-files@v44
+
