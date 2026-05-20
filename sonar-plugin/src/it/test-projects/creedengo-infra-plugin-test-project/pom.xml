@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.green-code-initiative</groupId>
+    <artifactId>creedengo-infra-plugin-test-project</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>creedengo Infra Sonar Plugin Test Project</name>
+    <description>
+        Test project consumed by creedengo-infra integration tests.
+        Holds IaC fixtures (Dockerfile, Kubernetes YAML, Terraform, CloudFormation)
+        that exercise the rules implemented by the plugin. The Maven build is
+        intentionally a no-op (`packaging=pom`) — only `sonar:sonar` is meaningful.
+    </description>
+
+    <properties>
+        <encoding>UTF-8</encoding>
+        <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
+
+        <!--
+            Tell the Sonar scanner where to look for the IaC fixtures.
+            Sonar-iac auto-detects Dockerfile / *.tf / Kubernetes YAML /
+            CloudFormation YAML based on file name and content sniffing.
+        -->
+        <sonar.sources>fixtures</sonar.sources>
+        <sonar.exclusions>pom.xml,target/**,tool_send_to_sonar.sh</sonar.exclusions>
+    </properties>
+
+
+</project>

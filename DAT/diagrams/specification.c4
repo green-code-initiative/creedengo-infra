@@ -1,0 +1,67 @@
+/**
+ * LikeC4 — Specification commune au workspace creedengo-infra.
+ *
+ * Compilation :
+ *   npx -y likec4 build DAT/diagrams
+ * Prévisualisation :
+ *   npx -y likec4 serve DAT/diagrams
+ */
+specification {
+
+  // ─── C4 standard ─────────────────────────────────────────────────────────
+  element actor {
+    style {
+      shape person
+      color secondary
+    }
+  }
+  element system
+  element container
+  element component
+
+  // ─── Spécifiques creedengo-infra ────────────────────────────────────────
+  element plugin {
+    style {
+      color amber
+      shape rectangle
+    }
+  }
+  element extension {
+    style {
+      color sky
+    }
+  }
+  element check {
+    style {
+      color green
+    }
+  }
+  element artifact {
+    style {
+      shape storage
+      color muted
+    }
+  }
+  element registry {
+    style {
+      shape storage
+      color indigo
+    }
+  }
+  element external {
+    style {
+      color slate
+    }
+  }
+
+  // ─── Relations qualifiées ───────────────────────────────────────────────
+  relationship registers
+  relationship publishes
+  relationship parses
+  relationship scans
+  relationship reports
+  relationship reads
+  relationship activates
+  relationship uses
+}
+
