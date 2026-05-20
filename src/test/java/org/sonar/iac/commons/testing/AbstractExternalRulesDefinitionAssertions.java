@@ -20,11 +20,8 @@ package org.sonar.iac.commons.testing;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 
-import java.util.stream.Stream;
-
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.iac.common.reports.AbstractExternalRulesDefinition;
-import org.sonar.plugins.java.api.tree.Arguments;
 
 public class AbstractExternalRulesDefinitionAssertions {
 
