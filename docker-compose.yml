@@ -28,7 +28,7 @@ services:
       # NOTE: do NOT mount a named volume on /opt/sonarqube/extensions :
       # it would persist stale / partially-copied JARs between runs and
       # cause "Unable to read plugin manifest from jar" errors at startup.
-        source: ./sonar-plugin/target/creedengo-infra-plugin-feature-rebase-on_eslint-SNAPSHOT.jar
+        source: ./sonar-plugin/target/creedengo-infra-plugin.jar
         target: /opt/sonarqube/extensions/plugins/creedengo-infra-plugin-2.1.1-SNAPSHOT.jar
       - "logs:/opt/sonarqube/logs"
       - "data:/opt/sonarqube/data"

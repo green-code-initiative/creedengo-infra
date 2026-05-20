@@ -6,32 +6,29 @@
     <groupId>org.green-code-initiative</groupId>
     <artifactId>creedengo-infra-plugin-test-project</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-    <name>creedengo Java Sonar Plugin Test Project</name>
+    <name>creedengo Infra Sonar Plugin Test Project</name>
+    <description>
+        Test project consumed by creedengo-infra integration tests.
+        Holds IaC fixtures (Dockerfile, Kubernetes YAML, Terraform, CloudFormation)
+        that exercise the rules implemented by the plugin. The Maven build is
+        intentionally a no-op (`packaging=pom`) — only `sonar:sonar` is meaningful.
+    </description>
 
     <properties>
-        <java.version>17</java.version>
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
-
-        <sonar.java.binaries>target</sonar.java.binaries>
-
         <encoding>UTF-8</encoding>
         <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
+
+        <!--
+            Tell the Sonar scanner where to look for the IaC fixtures.
+            Sonar-iac auto-detects Dockerfile / *.tf / Kubernetes YAML /
+            CloudFormation YAML based on file name and content sniffing.
+        -->
+        <sonar.sources>fixtures</sonar.sources>
+        <sonar.exclusions>pom.xml,target/**,tool_send_to_sonar.sh</sonar.exclusions>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-jpa</artifactId>
-            <version>3.5.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-            <version>6.2.7</version>
-        </dependency>
-    </dependencies>
 
 </project>

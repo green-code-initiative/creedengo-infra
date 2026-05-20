@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: p
+spec:
+  containers:
+    - name: pinned-digest
+      image: myorg/api@sha256:abc
+      imagePullPolicy: Always
+    - name: pinned-tag
+      image: myorg/api:1.2.3
+      imagePullPolicy: Always
+    - name: registry-port
+      image: registry.local:5000/team/api:1.0
+      imagePullPolicy: Always
+
