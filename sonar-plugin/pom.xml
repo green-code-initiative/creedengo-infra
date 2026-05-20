@@ -275,6 +275,13 @@
     </dependencies>
 
     <build>
+        <!--
+            Stable artifact filename, independent of <version> and Git branch.
+            This lets docker-compose.yml bind-mount a fixed path
+            (./target/creedengo-infra-plugin.jar) without needing edits at
+            every release / branch switch.
+        -->
+        <finalName>creedengo-infra-plugin</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -283,7 +290,6 @@
                 <directory>../eslint-plugin/dist/pack</directory>
             </resource>
         </resources>
-
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -382,37 +388,6 @@
                     <getRevisionOnlyOnce>true</getRevisionOnlyOnce>
                     <revisionOnScmFailure>0</revisionOnScmFailure>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>${version.maven-exec}</version>
-                <executions>
-                    <execution>
-                        <id>eslint-plugin-clean</id>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                        <phase>clean</phase>
-                        <configuration>
-                            <executable>yarn</executable>
-                            <arguments>clean</arguments>
-                            <workingDirectory>../eslint-plugin</workingDirectory>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>eslint-plugin-pack</id>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                        <phase>generate-resources</phase>
-                        <configuration>
-                            <executable>yarn</executable>
-                            <arguments>pack:sonar</arguments>
-                            <workingDirectory>../eslint-plugin</workingDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>

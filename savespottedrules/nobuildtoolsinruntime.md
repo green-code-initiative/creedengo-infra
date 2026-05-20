@@ -30,7 +30,7 @@ _Compliant Solution_
 ```Dockerfile
 FROM eclipse-temurin:17-jdk-alpine AS builder
 RUN apk add --no-cache gcc make
-COPY . /src
+COPY .. /src
 RUN cd /src && ./build.sh
 
 FROM eclipse-temurin:17-jre-alpine

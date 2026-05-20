@@ -17,29 +17,11 @@
  */
 package org.greencodeinitiative.creedengo.infra.checks;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.function.BiConsumer;
-import org.assertj.core.api.Assertions;
-import org.sonar.iac.common.api.checks.CheckContext;
-import org.sonar.iac.common.api.checks.IacCheck;
-import org.sonar.iac.common.api.checks.InitContext;
-import org.sonar.iac.common.api.checks.SecondaryLocation;
-import org.sonar.iac.common.api.tree.HasTextRange;
-import org.sonar.iac.common.api.tree.Tree;
-import org.sonar.iac.common.api.tree.impl.TextRange;
-import org.sonar.iac.common.extension.visitors.TreeContext;
-import org.sonar.iac.common.extension.visitors.TreeVisitor;
 import org.sonar.iac.terraform.parser.HclParser;
 
 /**
  * Minimal Terraform verifier — same {@code (line, message)} comparison
- * strategy as {@link DockerVerifier}, parsing fixtures with
+ * strategy as {@link DockerVerifier1}, parsing fixtures with
  * {@link HclParser}. Fixtures live under
  * {@code src/test/resources/checks/<CheckName>/}.
  */

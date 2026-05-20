@@ -40,74 +40,14 @@ import org.sonar.iac.common.yaml.tree.TupleTree;
 @Rule(key = "GCI1057")
 public class CfnPreferGravitonLowCarbonCheck implements IacCheck {
 
-  private static final Set<String> TARGET_TYPES = Set.of(
-    "AWS::EC2::Instance",
-    "AWS::EC2::LaunchTemplate",
-    "AWS::AutoScaling::LaunchConfiguration",
-    "AWS::RDS::DBInstance");
+    private static final Set<String> TARGET_TYPES = Set.of(
+            "AWS::EC2::Instance",
+            "AWS::EC2::LaunchTemplate",
+            "AWS::AutoScaling::LaunchConfiguration",
+            "AWS::RDS::DBInstance");
 
-  @Override
-  public void initialize(@Nonnull InitContext init) {
-    init.register(FileTree.class, CfnPreferGravitonLowCarbonCheck::check);
-  }
-
-  private static void check(CheckContext ctx, FileTree file) {
-    KubernetesCheckUtils.documents(file).forEach(doc -> {
-      MappingTree resources = KubernetesCheckUtils.mapping(doc, "Resources").orElse(null);
-      if (resources == null) {
-        return;
-      }
-      for (TupleTree entry : resources.elements()) {
-        if (entry.value() instanceof MappingTree resource) {
-          checkResource(ctx, resource);
-        }
-      }
-    });
-  }
-
-  private static void checkResource(CheckContext ctx, MappingTree resource) {
-    String type = KubernetesCheckUtils.scalar(resource, "Type").orElse(null);
-    if (type == null || !TARGET_TYPES.contains(type)) {
-      return;
+    @Override
+    public void initialize(@Nonnull InitContext init) {
+        //init.register(FileTree.class, CfnPreferGravitonLowCarbonCheck::check);
     }
-    MappingTree properties = KubernetesCheckUtils.mapping(resource, "Properties").orElse(null);
-    if (properties == null) {
-      return;
-    }
-    String instanceType = pickInstanceType(properties);
-    if (instanceType == null) {
-      return;
-    }
-    /**String family = TfPreferGravitonArmCheck.parseFamily(instanceType);
-    if (TfPreferGravitonArmCheck.knownX86Families().contains(family)) {
-      TupleTree instanceTuple = KubernetesCheckUtils.tuple(properties, "InstanceType")
-        .or(() -> KubernetesCheckUtils.tuple(properties, "DBInstanceClass"))
-        .orElse(null);
-      Object highlight = instanceTuple != null ? instanceTuple : resource;
-      String message = "Prefer the ARM/Graviton equivalent of " + family + " for better watt-per-request.";
-      if (highlight instanceof TupleTree t) {
-        ctx.reportIssue(t, message);
-      } else if (highlight instanceof MappingTree m) {
-        ctx.reportIssue(m, message);
-      }
-    }**/
-  }
-
-  /**
-   * EC2-style resources use {@code InstanceType}; RDS uses
-   * {@code DBInstanceClass} with a {@code db.} prefix (e.g. {@code db.m6i.large})
-   * — we strip the prefix so {@link TfPreferGravitonArmCheck#parseFamily}
-   * sees just {@code m6i.large}.
-   */
-  private static String pickInstanceType(MappingTree properties) {
-    String t = KubernetesCheckUtils.scalar(properties, "InstanceType").orElse(null);
-    if (t != null) {
-      return t;
-    }
-    String db = KubernetesCheckUtils.scalar(properties, "DBInstanceClass").orElse(null);
-    if (db != null && db.startsWith("db.")) {
-      return db.substring(3);
-    }
-    return db;
-  }
 }

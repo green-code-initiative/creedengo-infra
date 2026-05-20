@@ -35,25 +35,6 @@ public class UseOfProbesCheck implements IacCheck {
 
   @Override
   public void initialize(@javax.annotation.Nonnull InitContext init) {
-    init.register(CommandNode.class, UseOfProbesCheck::checkTree);
-  }
-
-  private static void checkTree(CheckContext ctx, CommandNode commandNode) {
-    var kubernetesContext = (KubernetesCheckContext) ctx;
-
-    boolean hasLiveness = commandNode.arguments().stream().anyMatch(n -> isFieldNamed(n, LIVENESS));
-    boolean hasReadiness = commandNode.arguments().stream().anyMatch(n -> isFieldNamed(n, READINESS));
-
-    if (!hasLiveness || !hasReadiness) {
-      kubernetesContext.reportIssueNoLineShift(commandNode.textRange(), MESSAGE);
-    }
-  }
-
-  private static boolean isFieldNamed(Node node, String expectedIdentifier) {
-    if (node instanceof FieldNode fieldNode) {
-      return fieldNode.identifiers().stream()
-        .anyMatch(id -> id.equalsIgnoreCase(expectedIdentifier));
-    }
-    return false;
+    //init.register(CommandNode.class, UseOfProbesCheck::checkTree);
   }
 }

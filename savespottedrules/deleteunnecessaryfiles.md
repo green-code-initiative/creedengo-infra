@@ -36,7 +36,7 @@ _Compliant Solution_
 node_modules
 npm-debug.log*
 .git
-.gitignore
+../.gitignore
 .dockerignore
 Dockerfile*
 .env

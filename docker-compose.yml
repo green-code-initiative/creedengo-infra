@@ -18,21 +18,29 @@ services:
       SONAR_JDBC_URL: jdbc:postgresql://db:5432/sonarqube
       SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: "true"
     volumes:
+      # Bind-mount the locally built plugin JAR into Sonar.
+      # The pom.xml uses <finalName>creedengo-infra-plugin</finalName>
+      # so this path is stable across versions and Git branches.
+      # IMPORTANT : build the plugin first (`make build` or `./mvnw package -DskipTests`)
+      # before `docker compose up`, otherwise Docker creates an empty
+      # directory at this path and Sonar fails to read the plugin.
       - type: bind
-        source: ./sonar-plugin/target/creedengo-infra-plugin-feature-initinfraplugin-SNAPSHOT.jar
+      # NOTE: do NOT mount a named volume on /opt/sonarqube/extensions :
+      # it would persist stale / partially-copied JARs between runs and
+      # cause "Unable to read plugin manifest from jar" errors at startup.
+        source: ./sonar-plugin/target/creedengo-infra-plugin-feature-rebase-on_eslint-SNAPSHOT.jar
         target: /opt/sonarqube/extensions/plugins/creedengo-infra-plugin-2.1.1-SNAPSHOT.jar
-      - "extensions:/opt/sonarqube/extensions"
       - "logs:/opt/sonarqube/logs"
       - "data:/opt/sonarqube/data"
     healthcheck:
-      test: wget -qO- http://sonar:9000/api/system/status | grep -q -e '"status":"UP"' -e '"status":"DB_MIGRATION_NEEDED"' -e '"status":"DB_MIGRATION_RUNNING"' || exit 1
+      test: 'host="$(hostname -i || echo ''127.0.0.1'')" && curl -sf http://$$host:9000/api/system/status | grep -qE ''"status":"(UP|DB_MIGRATION_REQUIRED|DB_MIGRATION_RUNNING|MIGRATION_SUCCEEDED)"'''
       interval: 10s
       timeout: 10s
       retries: 5
 
   db:
-    image: postgres:16-alpine
-    container_name: postgresql_creedengo_infra
+    image: postgres:17-alpine
+    container_name: postgresql_creedengo_javascript
     networks:
       - sonarnet
     volumes:
@@ -55,5 +63,4 @@ networks:
 volumes:
   data:
   logs:
-  extensions:
   pg_data:

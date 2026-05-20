@@ -23,7 +23,7 @@ _Noncompliant Code Example_
 
 ```Dockerfile
 FROM node:18-alpine
-COPY . .
+COPY .. .
 RUN npm install
 CMD ["node", "index.js"]
 ```

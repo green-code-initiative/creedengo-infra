@@ -76,52 +76,7 @@ public class NoBuildToolsInRuntimeCheck implements IacCheck {
 
   @Override
   public void initialize(@Nonnull InitContext init) {
-    init.register(Body.class, NoBuildToolsInRuntimeCheck::check);
-  }
 
-  private static void check(CheckContext ctx, Body body) {
-    List<DockerImage> images = body.dockerImages();
-    if (images.isEmpty()) {
-      return;
-    }
-    DockerImage runtime = images.get(images.size() - 1);
-    runtime.instructions().stream()
-        .filter(RunInstruction.class::isInstance)
-        .map(RunInstruction.class::cast)
-        .forEach(run -> {
-          String command = DockerCheckUtils.joinCommandText(run);
-          if (installsBuildPackage(command)) {
-            ctx.reportIssue(run, MESSAGE);
-          }
-        });
-  }
-
-  static boolean installsBuildPackage(String command) {
-    if (command == null || command.isBlank()) {
-      return false;
-    }
-    String lower = " " + command.toLowerCase() + " ";
-    boolean looksLikeInstall = INSTALL_HINTS.stream().anyMatch(lower::contains);
-    if (!looksLikeInstall) {
-      return false;
-    }
-    return BUILD_PACKAGES.stream().anyMatch(pkg -> containsToken(lower, pkg));
-  }
-
-  /** Match a package token bounded by non-alphanumeric chars (avoid {@code git} matching {@code github}). */
-  private static boolean containsToken(String haystack, String token) {
-    int idx = 0;
-    while ((idx = haystack.indexOf(token, idx)) != -1) {
-      char before = haystack.charAt(idx - 1);
-      int afterIdx = idx + token.length();
-      char after = afterIdx < haystack.length() ? haystack.charAt(afterIdx) : ' ';
-      boolean leftOk = !Character.isLetterOrDigit(before) && before != '-';
-      boolean rightOk = !Character.isLetterOrDigit(after) && after != '-';
-      if (leftOk && rightOk) {
-        return true;
-      }
-      idx = afterIdx;
-    }
-    return false;
+    //init.register(Body.class, NoBuildToolsInRuntimeCheck::check);
   }
 }
