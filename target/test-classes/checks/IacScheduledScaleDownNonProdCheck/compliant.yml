@@ -1,0 +1,30 @@
+# Production namespace — not flagged
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: production
+---
+# Non-prod namespace WITH a SleepInfo scheduler in the same file
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: staging
+---
+apiVersion: kube-green.com/v1alpha1
+kind: SleepInfo
+metadata:
+  name: weekday-sleep
+  namespace: staging
+spec:
+  weekdays: "1-5"
+  sleepAt: "20:00"
+  wakeUpAt: "07:00"
+---
+# Non-prod namespace explicitly opted-out via annotation
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev-batch
+  annotations:
+    eco-design/always-on: "nightly-batch"
+

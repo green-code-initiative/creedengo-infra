@@ -1,0 +1,128 @@
+-------------------------------------------------------------------------------
+Test set: org.greencodeinitiative.creedengo.infra.checks.SetResourceRequestsAndLimitsCheckTest
+-------------------------------------------------------------------------------
+Tests run: 8, Failures: 2, Errors: 4, Skipped: 0, Time elapsed: 0.100 s <<< FAILURE! -- in org.greencodeinitiative.creedengo.infra.checks.SetResourceRequestsAndLimitsCheckTest
+org.greencodeinitiative.creedengo.infra.checks.SetResourceRequestsAndLimitsCheckTest.missing_limits_fields -- Time elapsed: 0.036 s <<< ERROR!
+java.lang.IndexOutOfBoundsException: (16:15,17:0)
+	at org.sonarsource.analyzer.commons.checks.verifier.internal.UnderlinedRange.<init>(UnderlinedRange.java:67)
+	at org.sonarsource.analyzer.commons.checks.verifier.internal.InternalIssueVerifier.addActualIssues(InternalIssueVerifier.java:122)
+	at org.sonarsource.analyzer.commons.checks.verifier.internal.InternalIssueVerifier.buildReport(InternalIssueVerifier.java:99)
+	at org.sonarsource.analyzer.commons.checks.verifier.internal.InternalIssueVerifier.assertIssues(InternalIssueVerifier.java:154)
+	at org.sonarsource.analyzer.commons.checks.verifier.internal.InternalIssueVerifier.assertOneOrMoreIssues(InternalIssueVerifier.java:139)
+	at org.sonar.iac.commons.testing.Verifier.verify(Verifier.java:133)
+	at org.greencodeinitiative.creedengo.infra.checks.KubernetesVerifier.verify(KubernetesVerifier.java:93)
+	at org.greencodeinitiative.creedengo.infra.checks.SetResourceRequestsAndLimitsCheckTest.missing_limits_fields(SetResourceRequestsAndLimitsCheckTest.java:65)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.greencodeinitiative.creedengo.infra.checks.SetResourceRequestsAndLimitsCheckTest.missing_limits_block -- Time elapsed: 0.008 s <<< ERROR!
+java.lang.IndexOutOfBoundsException: (12:13,15:0)
+	at org.sonarsource.analyzer.commons.checks.verifier.internal.UnderlinedRange.<init>(UnderlinedRange.java:67)
+	at org.sonarsource.analyzer.commons.checks.verifier.internal.InternalIssueVerifier.addActualIssues(InternalIssueVerifier.java:122)
+	at org.sonarsource.analyzer.commons.checks.verifier.internal.InternalIssueVerifier.buildReport(InternalIssueVerifier.java:99)
+	at org.sonarsource.analyzer.commons.checks.verifier.internal.InternalIssueVerifier.assertIssues(InternalIssueVerifier.java:154)
+	at org.sonarsource.analyzer.commons.checks.verifier.internal.InternalIssueVerifier.assertOneOrMoreIssues(InternalIssueVerifier.java:139)
+	at org.sonar.iac.commons.testing.Verifier.verify(Verifier.java:133)
+	at org.greencodeinitiative.creedengo.infra.checks.KubernetesVerifier.verify(KubernetesVerifier.java:93)
+	at org.greencodeinitiative.creedengo.infra.checks.SetResourceRequestsAndLimitsCheckTest.missing_limits_block(SetResourceRequestsAndLimitsCheckTest.java:59)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.greencodeinitiative.creedengo.infra.checks.SetResourceRequestsAndLimitsCheckTest.missing_requests_block -- Time elapsed: 0.008 s <<< ERROR!
+java.lang.IndexOutOfBoundsException: (12:13,14:0)
+	at org.sonarsource.analyzer.commons.checks.verifier.internal.UnderlinedRange.<init>(UnderlinedRange.java:67)
+	at org.sonarsource.analyzer.commons.checks.verifier.internal.InternalIssueVerifier.addActualIssues(InternalIssueVerifier.java:122)
+	at org.sonarsource.analyzer.commons.checks.verifier.internal.InternalIssueVerifier.buildReport(InternalIssueVerifier.java:99)
+	at org.sonarsource.analyzer.commons.checks.verifier.internal.InternalIssueVerifier.assertIssues(InternalIssueVerifier.java:154)
+	at org.sonarsource.analyzer.commons.checks.verifier.internal.InternalIssueVerifier.assertOneOrMoreIssues(InternalIssueVerifier.java:139)
+	at org.sonar.iac.commons.testing.Verifier.verify(Verifier.java:133)
+	at org.greencodeinitiative.creedengo.infra.checks.KubernetesVerifier.verify(KubernetesVerifier.java:93)
+	at org.greencodeinitiative.creedengo.infra.checks.SetResourceRequestsAndLimitsCheckTest.missing_requests_block(SetResourceRequestsAndLimitsCheckTest.java:47)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.greencodeinitiative.creedengo.infra.checks.SetResourceRequestsAndLimitsCheckTest.missing_requests_fields -- Time elapsed: 0.014 s <<< FAILURE!
+org.junit.ComparisonFailure: 
+ERROR: Expect 0 quickfixes instead of 0. In file (tmp-parser-1618720469998219990:12)
+[----------------------------------------------------------------------]
+[ '-' means expected but not raised, '+' means raised but not expected ]
+  <tmp-parser-1618720469998219990>
+- 012: Noncompliant {{Set resources.requests.cpu to help the scheduler and avoid resource contention.}}
+- 012:             requests:
++ 013: Noncompliant {{Set resources.requests.cpu to help the scheduler and avoid resource contention.}}
++ 013:               memory: "128Mi"
++ 013:               ^[el=+1;ec=12] 0
+[----------------------------------------------------------------------]
+;  expected:<...8720469998219990>
+01[2: Noncompliant {{Set resources.requests.cpu to help the scheduler and avoid resource contention.}}
+012:             requests:]
+
+> but was:<...8720469998219990>
+01[3: Noncompliant {{Set resources.requests.cpu to help the scheduler and avoid resource contention.}}
+013:               memory: "128Mi"
+013:               ^[el=+1;ec=12] 0
+]
+
+>
+	at org.junit.Assert.assertEquals(Assert.java:117)
+	at org.sonarsource.analyzer.commons.checks.verifier.internal.InternalIssueVerifier.assertIssues(InternalIssueVerifier.java:176)
+	at org.sonarsource.analyzer.commons.checks.verifier.internal.InternalIssueVerifier.assertOneOrMoreIssues(InternalIssueVerifier.java:139)
+	at org.sonar.iac.commons.testing.Verifier.verify(Verifier.java:133)
+	at org.greencodeinitiative.creedengo.infra.checks.KubernetesVerifier.verify(KubernetesVerifier.java:93)
+	at org.greencodeinitiative.creedengo.infra.checks.SetResourceRequestsAndLimitsCheckTest.missing_requests_fields(SetResourceRequestsAndLimitsCheckTest.java:53)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.greencodeinitiative.creedengo.infra.checks.SetResourceRequestsAndLimitsCheckTest.no_resources_block -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.RuntimeException: java.nio.file.NoSuchFileException: src/test/resources/checks/SetResourceRequestsAndLimitsCheck/noncompliant_no_resources.yaml
+	at org.greencodeinitiative.creedengo.infra.checks.KubernetesVerifier.containsHelmContent(KubernetesVerifier.java:179)
+	at org.greencodeinitiative.creedengo.infra.checks.KubernetesVerifier.initializeVerification(KubernetesVerifier.java:162)
+	at org.greencodeinitiative.creedengo.infra.checks.KubernetesVerifier.verify(KubernetesVerifier.java:90)
+	at org.greencodeinitiative.creedengo.infra.checks.SetResourceRequestsAndLimitsCheckTest.no_resources_block(SetResourceRequestsAndLimitsCheckTest.java:41)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+Caused by: java.nio.file.NoSuchFileException: src/test/resources/checks/SetResourceRequestsAndLimitsCheck/noncompliant_no_resources.yaml
+	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:92)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:106)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:111)
+	at java.base/sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:218)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:380)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:432)
+	at java.base/java.nio.file.Files.readAllBytes(Files.java:3288)
+	at java.base/java.nio.file.Files.readString(Files.java:3366)
+	at java.base/java.nio.file.Files.readString(Files.java:3325)
+	at org.greencodeinitiative.creedengo.infra.checks.KubernetesVerifier.containsHelmContent(KubernetesVerifier.java:176)
+	... 6 more
+
+org.greencodeinitiative.creedengo.infra.checks.SetResourceRequestsAndLimitsCheckTest.cronjob_missing_limits_cpu -- Time elapsed: 0.007 s <<< FAILURE!
+org.junit.ComparisonFailure: 
+ERROR: Expect some issues, but there's none. In file (tmp-parser-16996160201928079163:17)
+[----------------------------------------------------------------------]
+[ '-' means expected but not raised, '+' means raised but not expected ]
+  <tmp-parser-16996160201928079163>
+- 017: Noncompliant {{Set resources.limits.cpu for batch workloads (Job/CronJob) to prevent runaway loops monopolising the node.}}
+- 017:                 limits:
+[----------------------------------------------------------------------]
+;  expected:<[<tmp-parser-16996160201928079163>
+017: Noncompliant {{Set resources.limits.cpu for batch workloads (Job/CronJob) to prevent runaway loops monopolising the node.}}
+017:                 limits:]
+
+> but was:<[ERROR: Expect some issues, but there's none.
+<tmp-parser-16996160201928079163>]
+
+>
+	at org.junit.Assert.assertEquals(Assert.java:117)
+	at org.sonarsource.analyzer.commons.checks.verifier.internal.InternalIssueVerifier.assertIssues(InternalIssueVerifier.java:176)
+	at org.sonarsource.analyzer.commons.checks.verifier.internal.InternalIssueVerifier.assertOneOrMoreIssues(InternalIssueVerifier.java:139)
+	at org.sonar.iac.commons.testing.Verifier.verify(Verifier.java:133)
+	at org.greencodeinitiative.creedengo.infra.checks.KubernetesVerifier.verify(KubernetesVerifier.java:93)
+	at org.greencodeinitiative.creedengo.infra.checks.SetResourceRequestsAndLimitsCheckTest.cronjob_missing_limits_cpu(SetResourceRequestsAndLimitsCheckTest.java:71)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+

@@ -1,0 +1,12 @@
+name: ci
+on:
+  push:
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: tj-actions/changed-files@v44
+      - uses: some-org/deploy@main
+      - uses: another-org/release@release-1.2
+      - uses: actions/checkout@v4
+
