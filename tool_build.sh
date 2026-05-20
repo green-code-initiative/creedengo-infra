@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 
-
-./mvnw clean package -DskipTests
+cd ./sonar-plugin
+../mvnw clean package -DskipTests
