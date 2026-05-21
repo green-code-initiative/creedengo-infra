@@ -251,8 +251,7 @@ in the same wave) and the `KubernetesCheckUtils` helper for `kind:`,
 
 | Key | Slug | Visitor entry point | Notes |
 | --- | --- | --- | --- |
-| GCI1040 | `setresourcerequests` | `FileTree` → containers | Reports `cpu` and `memory` independently when `resources.requests.{cpu,memory}` is missing. |
-| GCI1041 | `setresourcelimits` | `FileTree` → containers | Same shape on `resources.limits.{cpu,memory}`. |
+| GCI1040 | `setresourcerequestsandlimits` | `FileTree` → containers | Reports `cpu` and `memory` independently when `resources.requests.{cpu,memory}` or `resources.limits.{cpu,memory}` is missing. |
 | GCI1042 | `cpurequestvslimitratio` | `FileTree` → containers | `RuleProperty maxRatio` (default 4×). Parses K8s quantities (m, Ki/Mi/Gi, K/M/G, …) — unparseable values are silently skipped. |
 | GCI1046 | `imagepullpolicynotalways` | `FileTree` → containers | Flags `imagePullPolicy: Always` when the image is pinned (digest `@sha256:` or explicit non-`:latest` tag). `:latest` is intentionally NOT flagged here — covered by GCI1031. |
 | GCI1047 | `restricthostnetworkhostpid` | `FileTree` → podSpec | Reports each of `hostNetwork`, `hostPID`, `hostIPC` set to `true`. |

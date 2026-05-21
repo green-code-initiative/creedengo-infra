@@ -1,0 +1,23 @@
+name: ci
+on:
+  push:
+jobs:
+  build-arm:
+    runs-on: ubuntu-22.04-arm
+    steps:
+      - run: echo build
+  windows:
+    runs-on: windows-2022
+    steps:
+      - run: echo windows
+  self-hosted:
+    runs-on: self-hosted
+    steps:
+      - run: echo self
+  legacy-x86:
+    # eco-design:arch=x86 native-binary tests
+    if: "eco-design:arch=x86"
+    runs-on: ubuntu-22.04
+    steps:
+      - run: echo legacy
+

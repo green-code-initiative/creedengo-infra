@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: db
+stringData:
+  password: "Sup3rS3cret!"
+  api_key: "AKIAIOSFODNN7EXAMPLE"
+---
+version: "3"
+services:
+  app:
+    image: myapp:1.0
+    environment:
+      DB_PASSWORD: "hardcoded"
+      TOKEN: "ghp_abcdef1234567890abcdef1234567890abcdef"
+

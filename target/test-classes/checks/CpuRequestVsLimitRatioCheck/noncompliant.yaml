@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: p
+spec:
+  containers:
+    - name: cpu-burst
+      image: myorg/api:1
+      resources:
+        requests:
+          cpu: "100m"
+          memory: "128Mi"
+        limits:
+          cpu: "2000m"
+          memory: "256Mi"
+    - name: mem-burst
+      image: myorg/api:1
+      resources:
+        requests:
+          cpu: "200m"
+          memory: "64Mi"
+        limits:
+          cpu: "400m"
+          memory: "1Gi"
+

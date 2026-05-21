@@ -1,0 +1,4 @@
+FROM nginx:1.27-alpine
+EXPOSE 443
+EXPOSE 80 443 8080
+

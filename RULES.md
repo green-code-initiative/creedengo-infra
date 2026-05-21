@@ -51,7 +51,7 @@ Authoritative metadata source: [`creedengo-rules-specifications`](../creedengo-r
 
 | Key | Slug | Severity | Remediation | Feasibility |
 | --- | --- | --- | --- | --- |
-| 1040 | [setresourcerequests](savespottedrules/setresourcerequests.md) **(impl)** | Major | Easy | ✅ |
+| 1040 | [setresourcerequests](savespottedrules/setresourcerequestsandlimits.md) **(impl)** | Major | Easy | ✅ |
 | 1041 | [setresourcelimits](savespottedrules/setresourcelimits.md) **(impl)** | Major | Easy | ✅ |
 | 1042 | [cpurequestvslimitratio](savespottedrules/cpurequestvslimitratio.md) **(impl)** | Minor | Medium | ✅ |
 | 1043 | [replicasgreaterthanneeded](savespottedrules/replicasgreaterthanneeded.md) **(impl)** | Minor | Hard | ⚠️ |
